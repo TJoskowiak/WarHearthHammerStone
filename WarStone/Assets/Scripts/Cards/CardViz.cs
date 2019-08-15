@@ -9,11 +9,11 @@ using System.Runtime.Serialization.Json;
 using System.Text;
 using System.IO;
 using System.Linq;
-
+using UnityEngine.Networking;
 
 namespace SA
 {
-    public class CardViz : MonoBehaviour
+    public class CardViz : NetworkBehaviour
     {
         //To be deleted. Or left. Not sure though what will call desrialize on card. Probably some battlefield controller that will also update the values on the cards.
         public int id = 1;
@@ -35,6 +35,9 @@ namespace SA
 
         private void Start()
         {
+            if (!isServer) {
+                transform.Rotate(new Vector3(0, 0, 180));
+            }
             //To be deleted. The Deserialie will be called from the game controller during the bginning of the game. Can' pass any parameters through Start, Awake or Update
             DeserializeCard(id);
         }
