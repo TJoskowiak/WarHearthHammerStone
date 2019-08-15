@@ -16,22 +16,22 @@ namespace SA
     public class CardViz : MonoBehaviour
     {
         //To be deleted. Or left. Not sure though what will call desrialize on card. Probably some battlefield controller that will also update the values on the cards.
-        public int id=1;
-        
+        public int id = 1;
+
         public TextMeshProUGUI cardName;
-        public TextMeshProUGUI HP;     
+        public TextMeshProUGUI HP;
         public TextMeshProUGUI strength;
         public TextMeshProUGUI weaponSkill;
-        
+
         public Image image;
 
-        private int _HealthPoints;
-        private int _StrengthPoints;
-        private int _WeaponSkillNum;
-    
-        public int HealthPoints { get => _HealthPoints; set => _HealthPoints = value; }  
-        public int StrengthPoints { get => _StrengthPoints; set => _StrengthPoints = value; }
-        public int WeaponSkillNum { get => _WeaponSkillNum; set => _WeaponSkillNum = value; }
+        private int _healthStat;
+        private int _specialStat;
+        private int _strengthStat;
+
+        public int healthStat { get => _healthStat; set => _healthStat = value; }
+        public int specialStat { get => _specialStat; set => _specialStat = value; }
+        public int strengthStat { get => _strengthStat; set => _strengthStat = value; }
 
         private void Start()
         {
@@ -41,39 +41,39 @@ namespace SA
 
         private void Update()
         {
-            this.HP.text = this.HealthPoints.ToString();
-            this.strength.text = this.StrengthPoints.ToString();
+            this.HP.text = this.healthStat.ToString();
+            this.strength.text = this.strengthStat.ToString();
         }
         //TODO: Implementation function that retrieves data from JSON file//
         //Add JSON files in folder \WarStone\Assets\Data//
         public void DeserializeCard(int CardID)
         {
-            var Deserializer = new DataContractJsonSerializer(typeof(Card));
             var CardData = new Card();
 
-            //Reads the correct line from file and initialize new MemoryStream with the lione converted to bytes
-            var StreamJSONLine = new MemoryStream(
-                Encoding.UTF8.GetBytes(
-                    File.ReadLines(@"Assets/Cards.json").Skip(CardID - 1).Take(1).First()));
+            var jsonString = File.ReadAllText(@"Assets/Cards.json");
+            var allCards = JsonUtility.FromJson<CardContainer>(jsonString);
 
-            //Deserialize the card
-            CardData = Deserializer.ReadObject(StreamJSONLine) as Card;
-            //Closes memory stream
-            StreamJSONLine.Close();
-
+            foreach (Card c in allCards.cards)
+            {
+                if (c.id == CardID)
+                {
+                    CardData = c;
+                }
+            }
             //Initialize each field
-            this.cardName.text = CardData.cardName;
+            this.cardName.text = CardData.name;
             //Initialize ints for each of the card fields
-            this.HealthPoints = CardData.hp;
-            this.StrengthPoints = CardData.strength;
-            this.WeaponSkillNum = CardData.weaponSkill;
+            this.healthStat = CardData.health;
+            this.specialStat = CardData.special;
+            this.strengthStat = CardData.strength;
+
             //Initialize corresponding TextMeshes
-            this.HP.text = this.HealthPoints.ToString();
-            this.strength.text = this.StrengthPoints.ToString();
+            this.HP.text = this.healthStat.ToString();
+            this.strength.text = this.strengthStat.ToString();
             //this.weaponSkill.text = this.WeaponSkillNum.ToString();
 
             //Initialize the sprite for the card
-            this.image.sprite = Resources.Load<Sprite>(CardData.imagePath);
+            this.image.sprite = Resources.Load<Sprite>(CardData.gfx_path);
 
         }
 
