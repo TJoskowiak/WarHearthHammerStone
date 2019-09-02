@@ -51,7 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1c75913138d2a7458493f08564612d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 1
+  card_json_id: 1
+  card_object_id: 0
   cardName: {fileID: 5596412766590342682}
   HP: {fileID: 7253319212473364342}
   strength: {fileID: 7253319211814678891}
