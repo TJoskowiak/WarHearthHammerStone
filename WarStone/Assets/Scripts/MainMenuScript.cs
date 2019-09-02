@@ -5,7 +5,8 @@ using UnityEngine;
 public class MainMenuScript : MonoBehaviour
 {
     public GameObject ExitDialogBoxWindow;
-    
+    public GameObject SettingsDialogBoxWindow;
+
     public void startGame()
     {
 
@@ -14,8 +15,8 @@ public class MainMenuScript : MonoBehaviour
     public void exitDialogBoxSetActive()
     {
         ExitDialogBoxWindow.SetActive(true);
-    }
 
+    }
     public void exitDialogBoxPressYes()
     {
         Debug.Log("Quit Game by user");
@@ -27,4 +28,13 @@ public class MainMenuScript : MonoBehaviour
         ExitDialogBoxWindow.SetActive(false);
     }
 
+    public void settingsDialogBoxSetActive()
+    {
+        SettingsDialogBoxWindow.SetActive(true);
+    }
+
+    public void colseSettingDialogBox()
+    {
+        SettingsDialogBoxWindow.SetActive(false);
+    }
 }

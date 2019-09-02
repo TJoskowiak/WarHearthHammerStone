@@ -1,42 +1,29 @@
-﻿//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
-
-//namespace SA
-//{
-//    [CreateAssetMenu(menuName = "Card")]
-//    public class Card : ScriptableObject
-//    {
-//        public string cardName;
-//        public Sprite image;
-//        public int hp;
-//        public int weaponSkill;
-//        public int strength;
-//    }
-
-//}
-
+﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 using UnityEngine;
 
 namespace SA
 {
-    [DataContract]
-    public class Card
+    [Serializable]
+    public class CardContainer
     {
-        [DataMember]
-        public int id;
-        [DataMember]
-        public string cardName;
-        [DataMember]
-        public string imagePath;
-        [DataMember]
-        public int hp;
-        [DataMember]
-        public int weaponSkill;
-        [DataMember]
-        public int strength;
+        public List<Card> cards;
     }
 
+    [Serializable]
+    public class Card
+    {
+        public int id;
+        public string name;
+        public string race;
+        public string category;
+        public int health;
+        public int special;
+        public int strength;
+        public int cost;
+        public string skill;
+        public string gfx_path;
+    }
 }
