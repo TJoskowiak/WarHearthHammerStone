@@ -1,0 +1,55 @@
+{
+  "cards": [
+    {
+      "id": 0,
+      "name": "Clanrat",
+      "race": "Skaven",
+      "category": "melee",
+      "skill": "taunt",
+      "health": 2,
+      "special": 1,
+      "strength": 4,
+      "cost": 8,
+      "gfx_path": "CardArt/Clanrat"
+    },
+
+    {
+      "id": 1,
+      "name": "TonTon",
+      "race": "Goblin",
+      "category": "melee",
+      "skill": "taunt",
+      "health": 8,
+      "special": 5,
+      "strength": 3,
+      "cost": 25,
+      "gfx_path": "CardArt/TonTon"
+    },
+
+    {
+      "id": 2,
+      "name": "Plague Priest",
+      "race": "Skaven",
+      "category": "ranged",
+      "skill": "heal",
+      "health": 3,
+      "special": 12,
+      "strength": 1,
+      "cost": 15,
+      "gfx_path": "CardArt/Plague_Priest"
+    },
+
+    {
+      "id": 3,
+      "name": "Rat Ogre",
+      "race": "Skaven",
+      "category": "melee",
+      "skill": "xD",
+      "health": 17,
+      "special": 6,
+      "strength": 7,
+      "cost": 12,
+      "gfx_path": "CardArt/Rat_Ogre"
+    }
+  ]
+}
