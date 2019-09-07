@@ -22,22 +22,17 @@ namespace SA.GameStates
             foreach (RaycastResult res in results)
             {
                 obj = res.gameObject.GetComponentInParent<IClicable>();
-                if ( obj  != null)
+                if (obj != null)
                 {
                     obj.onHighlight();
                     break;
                 }
             }
-
-            if (obj != null)
+            if(obj == null)
             {
-
-                if (Input.GetMouseButton(0))
-                {
-
-                    obj.onClick();
-                }
+                CardInstance.PopdownHandCard();
             }
+                
 
         }
     }

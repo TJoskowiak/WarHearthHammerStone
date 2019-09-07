@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec041814faedcab41b2b4876480a3293, type: 3}
-  m_Name: PlayerState
+  m_Script: {fileID: 11500000, guid: 70e7f75b618d2e540b938bf8135d0994, type: 3}
+  m_Name: My Desk Card
   m_EditorClassIdentifier: 
-  actions:
-  - {fileID: 11400000, guid: 05f735669bc10cd4da6e1028ef4e12ac, type: 2}
-  - {fileID: 11400000, guid: 89f13de22aaae1f4daa61149685c11c4, type: 2}
