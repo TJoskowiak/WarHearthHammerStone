@@ -5,25 +5,29 @@ using UnityEngine.EventSystems;
 
 namespace SA.GameStates
 {
-    [CreateAssetMenu(menuName = "Action/OnMouseClick")]
-    public class OnMouseClick : Action
+    [CreateAssetMenu(menuName = "Action/MouseHoldWithCard")]
+    public class MouseHoldWithCard : Action
     {
+        public State playerControlState;
+        public SO.GameEvent onPlayerControlEvent;
+
         public override void Execute(float d)
         {
-            if (Input.GetMouseButton(0))
+            bool mouseIsDown = Input.GetMouseButton(0);
+            if (!mouseIsDown)
             {
                 List<RaycastResult> results = Settings.GetObjectUnderMouse();
 
                 foreach (RaycastResult res in results)
                 {
-                    IClicable obj = res.gameObject.GetComponentInParent<IClicable>();
-                    if (obj != null)
-                    {
-                        obj.onClick();
-                        break;
-                    }
+
                 }
+
+                Settings.gameManager.SetState(playerControlState);
+                return;
             }
         }
+
     }
+    
 }

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec041814faedcab41b2b4876480a3293, type: 3}
-  m_Name: PlayerState
+  m_Name: Player Control State
   m_EditorClassIdentifier: 
   actions:
   - {fileID: 11400000, guid: 05f735669bc10cd4da6e1028ef4e12ac, type: 2}

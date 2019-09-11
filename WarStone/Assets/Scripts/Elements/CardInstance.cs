@@ -5,8 +5,13 @@ namespace SA
     public class CardInstance : MonoBehaviour, IClicable
     {
         public SA.GameElements.CardElementLogic currentLogic;
-
+        public CardViz cardViz;
         static CardInstance CardShowed = null; 
+
+        void Start()
+        {
+            cardViz = GetComponent<CardViz>();
+        }
 
         public void onClick()
         {
@@ -19,30 +24,32 @@ namespace SA
             currentLogic.onHighlight(this);
         }
 
-        public void PopupHandCard()
+        /*public void PopupHandCard()
         {
             Debug.Log("Powieksz");
             GameObject obj = gameObject.transform.parent.gameObject;
             if(CardShowed == null)
             {
-                CardShowed = this;
-                gameObject.GetComponentInParent<RectTransform>().Translate(0, 40, 0);
+                GridLayoutGroup layout = GameObject.Find("My Hand").GetComponentInParent<GridLayoutGroup>();
+
+                if (layout != null)
+                {
+                    Debug.Log("JestLayot");
+                    layout.enabled = false;
+                    CardShowed = this;
+                    gameObject.GetComponentInParent<RectTransform>().Translate(0, 40, 0);
+                }
             }
             else if(CardShowed != this)
             {
-                CardInstance.PopdownHandCard();
+                GridLayoutGroup layout = GameObject.Find("My Hand").GetComponentInParent<GridLayoutGroup>();
+                layout.enabled = true;
+                
+                layout.enabled = false;
                 gameObject.GetComponentInParent<RectTransform>().Translate(0, 40, 0);
                 CardShowed = this;
             }
         }
-        public static void PopdownHandCard()
-        {
-            if (CardShowed != null)
-            {
-                CardShowed.gameObject.GetComponentInParent<RectTransform>().Translate(0, -40, 00);
-                CardShowed = null;
-            }
-
-        }
+        */
     }
 }

@@ -10,14 +10,7 @@ namespace SA.GameStates
     {
         public override void Execute(float d)
         {
-            PointerEventData pointerEventData = new PointerEventData(EventSystem.current)
-            {
-                position = Input.mousePosition
-            };
-            //Debug.Log("Goblin patrzy na: " + pointerEventData.position);
-            List<RaycastResult> results = new List<RaycastResult>();
-            EventSystem.current.RaycastAll(pointerEventData, results);
-
+            List<RaycastResult> results = Settings.GetObjectUnderMouse();
             IClicable obj = null;
             foreach (RaycastResult res in results)
             {
@@ -28,12 +21,6 @@ namespace SA.GameStates
                     break;
                 }
             }
-            if(obj == null)
-            {
-                CardInstance.PopdownHandCard();
-            }
-                
-
         }
     }
 }

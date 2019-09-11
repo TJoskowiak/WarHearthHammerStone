@@ -17,6 +17,8 @@ namespace SA {
         public int card_json_id = 1;
         public int card_object_id = 0;
 
+        public int currentCardID;
+
         public TextMeshProUGUI cardName;
         public TextMeshProUGUI HP;
         public TextMeshProUGUI strength;
@@ -105,6 +107,7 @@ namespace SA {
         //TODO: Implementation function that retrieves data from JSON file//
         //Add JSON files in folder \WarStone\Assets\Data//
         public void DeserializeCard(int CardID) {
+            this.currentCardID = CardID;
             var CardData = new Card();
 
             var jsonString = File.ReadAllText(@"Assets/Cards.json");
