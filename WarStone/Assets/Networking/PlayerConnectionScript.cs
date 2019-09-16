@@ -22,6 +22,10 @@ public class PlayerConnectionScript : NetworkBehaviour
     void CmdLogNumbers(int FirstCard, int SecondCard)
     {
         Debug.Log("Following numbers has been sent: " + FirstCard + " " + SecondCard);
+        var firstViz = GameObject.Find(FirstCard.ToString()).GetComponent<SA.CardViz>();
+        var secondViz = GameObject.Find(SecondCard.ToString()).GetComponent<SA.CardViz>();
+        firstViz.healthStat -= secondViz.strengthStat;
+        secondViz.healthStat -= firstViz.strengthStat;
     }
 
     // Update is called once per frame

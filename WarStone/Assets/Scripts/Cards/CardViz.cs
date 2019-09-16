@@ -37,73 +37,19 @@ namespace SA {
         public int strengthStat { get => _strengthStat; set => _strengthStat = value; }
 
         private void Start() {
-            if (!isServer) {
+            if (!isServer)
                 transform.Rotate(new Vector3(0, 0, 180));
-                if (card_object_id < 100) {
-                    //ustaw authority dla mnie
-                    CmdSetAuthority(this.GetComponent<NetworkIdentity>());
-                }
-
-            } else {
-                if (card_object_id >= 100) {
-                    // ustaw authority dla mnie
-                    CmdSetAuthority(this.GetComponent<NetworkIdentity>());
-
-                }
-
-            }
             //To be deleted. The Deserialie will be called from the game controller during the bginning of the game. Can' pass any parameters through Start, Awake or Update
             DeserializeCard(card_json_id);
             this.name = card_object_id.ToString();
         }
 
         private void Update()
-        {
-            if (hasAuthority)
-            {
-                // Debug.Log(this.GetComponent<NetworkIdentity>().netId.ToString() + "I am yours");
-            }
+        { 
             this.HP.text = this.healthStat.ToString();
             this.strength.text = this.strengthStat.ToString();
-
-            if (Input.GetMouseButtonDown(0))
-            {
-                Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
-                RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
-                
-                if (hit.collider != null || card_object_id == 4)
-                {
-                    //hit.transform.name == this.name  <= original condiiton
-                    if ( card_object_id == 4) // <== debug condition
-                    {
-                        var Player = GameObject.Find("LocalPlayer");
-                        var PlayerComp = Player.GetComponent<PlayerConnectionScript>();
-                       
-                        if (PlayerComp.firstCard == 0)
-                        {
-                            PlayerComp.firstCard = card_object_id;
-                        }
-
-                        else if(PlayerComp.firstCard == this.card_object_id)
-                        {
-                            PlayerComp.firstCard = 0;
-                        }
-
-                        else if(PlayerComp.secondCard == 0)
-                        {
-                            PlayerComp.secondCard = card_object_id;
-                        }
-
-                        else if(PlayerComp.secondCard == card_object_id)
-                        {
-                            PlayerComp.secondCard = 0;
-                        }
-                    }
-                }
-            }
-
         }
+
         //TODO: Implementation function that retrieves data from JSON file//
         //Add JSON files in folder \WarStone\Assets\Data//
         public void DeserializeCard(int CardID) {
@@ -134,14 +80,6 @@ namespace SA {
             this.image.sprite = Resources.Load<Sprite>(CardData.gfx_path);
 
         }
-
-        [Command]
-        void CmdSetAuthority(NetworkIdentity grabID) {
-  
-
-            grabID.AssignClientAuthority(connectionToClient);
-        }
-
     }
 }
 
