@@ -8,7 +8,7 @@ namespace SA.GameElements
         public override void onClick(CardInstance instance)
         {
             Debug.Log("Nie klikaj na mnie tylko na nich");
-            //GameObject.Find("LocalPlayer").GetComponent<PlayerConnectionScript>().firstCard = instance.cardViz.card_object_id;
+            GameObject.Find("LocalPlayer").GetComponent<PlayerConnectionScript>().firstCard = instance.cardViz.card_object_id;
 
         }
 
