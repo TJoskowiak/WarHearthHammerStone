@@ -10,28 +10,29 @@ public class PlayerConnectionScript : NetworkBehaviour
     public int secondCard = 0;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         if (isLocalPlayer)
             this.name = "LocalPlayer";
         else
             this.name = "RemotePlayer";
     }
 
+
     [Command]
-    void CmdLogNumbers(int FirstCard, int SecondCard)
-    {
-        Debug.Log("Following numbers has been sent: " + FirstCard + " " + SecondCard);
+    public void CmdSendMovement(int FirstCard, int SecondCard) {
+        var firstViz = GameObject.Find(FirstCard.ToString()).GetComponent<SA.CardViz>();
+        var secondViz = GameObject.Find(SecondCard.ToString()).GetComponent<SA.CardViz>();
+        firstViz.healthStat -= secondViz.strengthStat;
+        secondViz.healthStat -= firstViz.strengthStat;
+
+        var Server = GameObject.Find("ServerObject");
+        var ServerComp = Server.GetComponent<ServerScript>();
+        ServerComp.RegisterMove(FirstCard, SecondCard);
+
     }
 
+
     // Update is called once per frame
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space) && isLocalPlayer)
-        {
-            CmdLogNumbers(firstCard, secondCard);
-            firstCard = 0;
-            secondCard = 0;
-        }
+    void Update() {
     }
 }

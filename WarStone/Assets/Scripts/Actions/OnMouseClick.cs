@@ -2,27 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-
 namespace SA.GameStates
 {
     [CreateAssetMenu(menuName = "Action/OnMouseClick")]
     public class OnMouseClick : Action
     {
-        public override void Execute(float d)
-        {
-            if (Input.GetMouseButton(0))
-            {
+        public override void Execute(float d) {
+            if (Input.GetMouseButton(0)) {
                 List<RaycastResult> results = Settings.GetObjectUnderMouse();
 
-                foreach (RaycastResult res in results)
-                {
+                foreach (RaycastResult res in results) {
                     IClicable obj = res.gameObject.GetComponentInParent<IClicable>();
-                    if (obj != null)
-                    {
+                    if (obj != null) {
                         obj.onClick();
                         break;
                     }
                 }
+            } else if (Input.GetMouseButton(1)) {
+                var Player = GameObject.Find("LocalPlayer");
+                var PlayerComp = Player.GetComponent<PlayerConnectionScript>();
+                PlayerComp.CmdSendMovement(PlayerComp.firstCard, PlayerComp.secondCard);
+                PlayerComp.firstCard = 0;
+                PlayerComp.secondCard = 0;
             }
         }
     }
