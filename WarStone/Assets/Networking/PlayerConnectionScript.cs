@@ -24,12 +24,9 @@ public class PlayerConnectionScript : NetworkBehaviour
         var secondViz = GameObject.Find(SecondCard.ToString()).GetComponent<SA.CardViz>();
         firstViz.healthStat -= secondViz.strengthStat;
         secondViz.healthStat -= firstViz.strengthStat;
-
-        firstViz._highlight = false;
-        secondViz._highlight = false;
-
         var Server = GameObject.Find("ServerObject");
         var ServerComp = Server.GetComponent<ServerScript>();
+
         ServerComp.RegisterMove(FirstCard, SecondCard);
 
     }

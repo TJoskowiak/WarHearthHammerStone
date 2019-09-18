@@ -22,13 +22,14 @@ namespace SA.GameStates
                 var Player = GameObject.Find("LocalPlayer");
                 var PlayerComp = Player.GetComponent<PlayerConnectionScript>();
                 PlayerComp.CmdSendMovement(PlayerComp.firstCard, PlayerComp.secondCard);
-                PlayerComp.firstCard = 0;
-                PlayerComp.secondCard = 0;
+
 
                 var firstViz = GameObject.Find(PlayerComp.firstCard.ToString()).GetComponent<SA.CardViz>();
                 var secondViz = GameObject.Find(PlayerComp.secondCard.ToString()).GetComponent<SA.CardViz>();
                 firstViz._highlight = false;
                 secondViz._highlight = false;
+                PlayerComp.firstCard = 0;
+                PlayerComp.secondCard = 0;
 
             }
         }
