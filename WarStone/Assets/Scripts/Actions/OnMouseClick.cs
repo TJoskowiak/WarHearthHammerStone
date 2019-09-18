@@ -8,7 +8,7 @@ namespace SA.GameStates
     public class OnMouseClick : Action
     {
         public override void Execute(float d) {
-            if (Input.GetMouseButton(0)) {
+            if (Input.GetMouseButtonDown(0)) {
                 List<RaycastResult> results = Settings.GetObjectUnderMouse();
 
                 foreach (RaycastResult res in results) {
@@ -18,12 +18,18 @@ namespace SA.GameStates
                         break;
                     }
                 }
-            } else if (Input.GetMouseButton(1)) {
+            } else if (Input.GetMouseButtonDown(1)) {
                 var Player = GameObject.Find("LocalPlayer");
                 var PlayerComp = Player.GetComponent<PlayerConnectionScript>();
                 PlayerComp.CmdSendMovement(PlayerComp.firstCard, PlayerComp.secondCard);
                 PlayerComp.firstCard = 0;
                 PlayerComp.secondCard = 0;
+
+                var firstViz = GameObject.Find(PlayerComp.firstCard.ToString()).GetComponent<SA.CardViz>();
+                var secondViz = GameObject.Find(PlayerComp.secondCard.ToString()).GetComponent<SA.CardViz>();
+                firstViz._highlight = false;
+                secondViz._highlight = false;
+
             }
         }
     }

@@ -9,6 +9,7 @@ namespace SA.GameElements
         {
             Debug.Log("Ought");
             GameObject.Find("LocalPlayer").GetComponent<PlayerConnectionScript>().secondCard = instance.cardViz.card_object_id;
+            instance.cardViz._highlight = !instance.cardViz._highlight;
 
         }
 

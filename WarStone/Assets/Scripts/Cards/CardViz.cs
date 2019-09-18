@@ -1,4 +1,5 @@
-﻿//Unity inludes
+﻿#pragma warning disable 0618
+//Unity inludes
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -33,6 +34,8 @@ namespace SA
         private int _specialStat;
         [SyncVar]
         private int _strengthStat;
+        [SyncVar]
+        public bool _highlight = false;
 
         public int healthStat { get => _healthStat; set => _healthStat = value; }
         public int specialStat { get => _specialStat; set => _specialStat = value; }
@@ -49,6 +52,14 @@ namespace SA
         private void Update() {
             this.HP.text = this.healthStat.ToString();
             this.strength.text = this.strengthStat.ToString();
+
+            if (_highlight) {
+                transform.localScale = new Vector3(1.1F, 1.1F, transform.localScale.z);
+            } 
+            else {
+                transform.localScale = new Vector3(1F, 1F, transform.localScale.z);
+
+            }
 
         }
         //TODO: Implementation function that retrieves data from JSON file//

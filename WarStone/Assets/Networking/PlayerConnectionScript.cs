@@ -25,6 +25,9 @@ public class PlayerConnectionScript : NetworkBehaviour
         firstViz.healthStat -= secondViz.strengthStat;
         secondViz.healthStat -= firstViz.strengthStat;
 
+        firstViz._highlight = false;
+        secondViz._highlight = false;
+
         var Server = GameObject.Find("ServerObject");
         var ServerComp = Server.GetComponent<ServerScript>();
         ServerComp.RegisterMove(FirstCard, SecondCard);
@@ -34,5 +37,6 @@ public class PlayerConnectionScript : NetworkBehaviour
 
     // Update is called once per frame
     void Update() {
+
     }
 }

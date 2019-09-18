@@ -6,6 +6,7 @@ namespace SA.GameElements
     {
         public abstract void onClick(CardInstance instance);
 
+
         public abstract void onHighlight(CardInstance instance);
     }
 }

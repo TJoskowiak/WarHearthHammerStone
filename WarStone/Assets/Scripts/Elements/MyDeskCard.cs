@@ -9,6 +9,7 @@ namespace SA.GameElements
         {
             Debug.Log("Nie klikaj na mnie tylko na nich");
             GameObject.Find("LocalPlayer").GetComponent<PlayerConnectionScript>().firstCard = instance.cardViz.card_object_id;
+            instance.cardViz._highlight = !instance.cardViz._highlight;
 
         }
 
