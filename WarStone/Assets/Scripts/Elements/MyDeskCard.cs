@@ -15,7 +15,7 @@ namespace SA.GameElements
             }
             var tempState = instance.cardViz._highlight;
 
-            var myDeskComp = GameObject.Find("Player1CardsDown");
+            var myDeskComp = GameObject.Find("Player1_Container");
             var children = myDeskComp.GetComponentsInChildren<CardViz>();
             foreach (var cardInstance in children) {
                 cardInstance.GetComponent<CardViz>()._highlight = false;
