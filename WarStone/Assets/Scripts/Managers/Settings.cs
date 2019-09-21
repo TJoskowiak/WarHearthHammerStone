@@ -10,10 +10,13 @@ namespace SA
     {
         public static GameManager gameManager;
         public static StateManager stateManager;
+
         private static ResourcesManager resourcesManager;
 
-        public static List<RaycastResult> GetObjectUnderMouse() {
-            PointerEventData pointerEventData = new PointerEventData(EventSystem.current) {
+        public static List<RaycastResult> GetObjectUnderMouse()
+        {
+            PointerEventData pointerEventData = new PointerEventData(EventSystem.current)
+            {
                 position = Input.mousePosition
             };
             //Debug.Log("Goblin patrzy na: " + pointerEventData.position);
@@ -23,14 +26,16 @@ namespace SA
             return results;
         }
 
-        public static void ChangeStateToPlayerControlState() {
+        public static void ChangeStateToPlayerControlState()
+        {
             gameManager.SetState(stateManager.PlayerControlState);
 
             var TurnTextbox = GameObject.Find("MyTurnTextbox");
             var TurnTextboxComp = TurnTextbox.GetComponent<Text>();
             TurnTextboxComp.text = "My turn";
         }
-        public static void ChangeStateToOpponentControlState() {
+        public static void ChangeStateToOpponentControlState()
+        {
             gameManager.SetState(stateManager.OpponentControlState);
 
             var TurnTextbox = GameObject.Find("MyTurnTextbox");
@@ -39,10 +44,14 @@ namespace SA
 
         }
 
-        public static void SwapState() {
-            if (gameManager.currentState == stateManager.OpponentControlState) {
+        public static void SwapState()
+        {
+            if (gameManager.currentState == stateManager.OpponentControlState)
+            {
                 ChangeStateToPlayerControlState();
-            } else if (gameManager.currentState == stateManager.PlayerControlState) {
+            }
+            else if (gameManager.currentState == stateManager.PlayerControlState)
+            {
                 ChangeStateToOpponentControlState();
             }
         }
