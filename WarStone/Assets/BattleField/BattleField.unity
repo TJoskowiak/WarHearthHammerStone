@@ -1234,6 +1234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 665306135}
   - component: {fileID: 665306136}
+  - component: {fileID: 665306137}
   m_Layer: 5
   m_Name: Player2CardsDown
   m_TagString: Untagged
@@ -1287,6 +1288,39 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 2
   m_ConstraintCount: 1
+--- !u!114 &665306137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665306134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 0
+    i1: 0
+    i2: 0
+    i3: 0
+    i4: 0
+    i5: 0
+    i6: 0
+    i7: 0
+    i8: 0
+    i9: 0
+    i10: 0
+    i11: 0
+    i12: 0
+    i13: 0
+    i14: 0
+    i15: 0
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!1 &665629784
 GameObject:
   m_ObjectHideFlags: 0
@@ -1296,6 +1330,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 665629785}
+  - component: {fileID: 665629786}
   m_Layer: 5
   m_Name: Opponent Hand
   m_TagString: Untagged
@@ -1322,6 +1357,39 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &665629786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665629784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 0
+    i1: 0
+    i2: 0
+    i3: 0
+    i4: 0
+    i5: 0
+    i6: 0
+    i7: 0
+    i8: 0
+    i9: 0
+    i10: 0
+    i11: 0
+    i12: 0
+    i13: 0
+    i14: 0
+    i15: 0
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!1 &697528498
 GameObject:
   m_ObjectHideFlags: 0
@@ -1708,6 +1776,11 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4647038847270091978, guid: a9a511cd857fa8543821f4a79fba6c76,
+        type: 3}
+      propertyPath: card_object_id
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9a511cd857fa8543821f4a79fba6c76, type: 3}
 --- !u!1 &821631986
@@ -1917,6 +1990,11 @@ PrefabInstance:
         type: 3}
       propertyPath: card_json_id
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647038847270091978, guid: a9a511cd857fa8543821f4a79fba6c76,
+        type: 3}
+      propertyPath: card_object_id
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9a511cd857fa8543821f4a79fba6c76, type: 3}
@@ -2217,6 +2295,11 @@ PrefabInstance:
         type: 3}
       propertyPath: card_json_id
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647038847270091978, guid: a9a511cd857fa8543821f4a79fba6c76,
+        type: 3}
+      propertyPath: card_object_id
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9a511cd857fa8543821f4a79fba6c76, type: 3}
@@ -2804,6 +2887,11 @@ PrefabInstance:
       propertyPath: card_json_id
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4647038847270091978, guid: a9a511cd857fa8543821f4a79fba6c76,
+        type: 3}
+      propertyPath: card_object_id
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9a511cd857fa8543821f4a79fba6c76, type: 3}
 --- !u!1 &1445511383
@@ -2853,6 +2941,7 @@ GameObject:
   - component: {fileID: 1588402133}
   - component: {fileID: 1588402134}
   - component: {fileID: 1588402135}
+  - component: {fileID: 1588402136}
   m_Layer: 5
   m_Name: Player1CardsDown
   m_TagString: Untagged
@@ -2916,6 +3005,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transformVariable: {fileID: 11400000, guid: 55f54ff8033dada4b8dac818aa2c2dd8, type: 2}
+--- !u!114 &1588402136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588402132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 0
+    i1: 0
+    i2: 0
+    i3: 0
+    i4: 0
+    i5: 0
+    i6: 0
+    i7: 0
+    i8: 0
+    i9: 0
+    i10: 0
+    i11: 0
+    i12: 0
+    i13: 0
+    i14: 0
+    i15: 0
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!1 &1681955520 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 459087192063210939, guid: a9a511cd857fa8543821f4a79fba6c76,
@@ -3106,6 +3228,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1718135887}
   - component: {fileID: 1718135888}
+  - component: {fileID: 1718135889}
   m_Layer: 5
   m_Name: My Hand
   m_TagString: Untagged
@@ -3160,6 +3283,39 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 2
   m_ConstraintCount: 1
+--- !u!114 &1718135889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718135886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 0
+    i1: 0
+    i2: 0
+    i3: 0
+    i4: 0
+    i5: 0
+    i6: 0
+    i7: 0
+    i8: 0
+    i9: 0
+    i10: 0
+    i11: 0
+    i12: 0
+    i13: 0
+    i14: 0
+    i15: 0
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!1 &1817153423 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 459087192063210939, guid: a9a511cd857fa8543821f4a79fba6c76,

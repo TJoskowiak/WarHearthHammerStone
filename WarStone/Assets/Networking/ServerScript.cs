@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class ServerScript : NetworkBehaviour
 {
@@ -32,4 +33,19 @@ public class ServerScript : NetworkBehaviour
         SA.Settings.SwapState();
     }
 
+    [ClientRpc]
+    public void RpcPlayer1CardDeployed(GameObject card)
+    {
+        if (card == null) return;
+
+        //typ kartu
+        //if(card.instance.cardViz.cardType == MinionCard)
+        {
+            var grid = GameObject.Find("Player1CardsDown");
+            card.transform.SetParent(grid.transform);
+            card.transform.localPosition = Vector3.zero;
+            card.transform.localScale = Vector3.one;
+            card.GetComponent<SA.CardInstance>().currentLogic = Resources.Load<SA.GameElements.CardElementLogic>(@"Data/Game Elements/My Desk Card");
+        }
+    }
 }

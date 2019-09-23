@@ -13,19 +13,7 @@ namespace SA.GameElements
 
         public override void Exeute()
         {
-            if (card.instance == null) return;
-
-            //typ kartu
-            //if(card.instance.cardViz.cardType == MinionCard)
-            {
-                card.instance.transform.SetParent(areaGrid.value.transform);
-                card.instance.transform.localPosition = Vector3.zero;
-                card.instance.transform.localScale = Vector3.one;
-
-            }
-            
-            
-            
+            GameObject.Find("LocalPlayer").GetComponent<PlayerConnectionScript>().CmdPlayer1CardDeployed(card.instance.gameObject);
         }
     }
 }

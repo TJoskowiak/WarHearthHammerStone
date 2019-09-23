@@ -17,9 +17,12 @@ namespace SA.GameElements
 
         public override void onDrag(CardInstance instance)
         {
-            currentCard.SetInstance(instance);
-            Settings.gameManager.SetState(holdingCard);
-            onCurretCardSelected.Raise();
+            if (GameObject.Find("LocalPlayer").GetComponent<PlayerConnectionScript>().isServer)
+            {
+                currentCard.SetInstance(instance);
+                Settings.gameManager.SetState(holdingCard);
+                onCurretCardSelected.Raise();
+            }
         }
 
         public override void onHighlight(CardInstance instance)

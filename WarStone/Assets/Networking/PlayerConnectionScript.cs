@@ -31,6 +31,13 @@ public class PlayerConnectionScript : NetworkBehaviour
 
     }
 
+    [Command]
+    public void CmdPlayer1CardDeployed(GameObject card)
+    {
+        var Server = GameObject.Find("ServerObject");
+        var ServerComp = Server.GetComponent<ServerScript>();
+        ServerComp.RpcPlayer1CardDeployed(card);
+    }
 
     // Update is called once per frame
     void Update() {
