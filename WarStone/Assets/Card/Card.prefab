@@ -53,6 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   card_json_id: 1
   card_object_id: 0
+  currentCardID: 0
   cardName: {fileID: 5596412766590342682}
   HP: {fileID: 7253319212473364342}
   strength: {fileID: 7253319211814678891}
@@ -307,8 +308,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 68, y: 88}
+  m_AnchoredPosition: {x: 0, y: -4}
+  m_SizeDelta: {x: 68, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &430060385072483726
 CanvasRenderer:

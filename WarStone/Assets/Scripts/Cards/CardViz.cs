@@ -1,4 +1,5 @@
-﻿//Unity inludes
+﻿#pragma warning disable 0618
+//Unity inludes
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -11,11 +12,15 @@ using System.IO;
 using System.Linq;
 using UnityEngine.Networking;
 
-namespace SA {
-    public class CardViz : NetworkBehaviour {
+namespace SA
+{
+    public class CardViz : NetworkBehaviour
+    {
         //To be deleted. Or left. Not sure though what will call desrialize on card. Probably some battlefield controller that will also update the values on the cards.
         public int card_json_id = 1;
         public int card_object_id = 0;
+
+        public int currentCardID;
 
         public TextMeshProUGUI cardName;
         public TextMeshProUGUI HP;
@@ -29,6 +34,8 @@ namespace SA {
         private int _specialStat;
         [SyncVar]
         private int _strengthStat;
+        [SyncVar]
+        public bool _highlight = false;
 
         public int healthStat { get => _healthStat; set => _healthStat = value; }
         public int specialStat { get => _specialStat; set => _specialStat = value; }
@@ -37,74 +44,28 @@ namespace SA {
         private void Start() {
             if (!isServer) {
                 transform.Rotate(new Vector3(0, 0, 180));
-                if (card_object_id < 100) {
-                    //ustaw authority dla mnie
-                    CmdSetAuthority(this.GetComponent<NetworkIdentity>());
-                }
-
-            } else {
-                if (card_object_id >= 100) {
-                    // ustaw authority dla mnie
-                    CmdSetAuthority(this.GetComponent<NetworkIdentity>());
-
-                }
-
             }
-            //To be deleted. The Deserialie will be called from the game controller during the bginning of the game. Can' pass any parameters through Start, Awake or Update
             DeserializeCard(card_json_id);
             this.name = card_object_id.ToString();
         }
 
-        private void Update()
-        {
-            if (hasAuthority)
-            {
-                // Debug.Log(this.GetComponent<NetworkIdentity>().netId.ToString() + "I am yours");
-            }
+        private void Update() {
             this.HP.text = this.healthStat.ToString();
             this.strength.text = this.strengthStat.ToString();
 
-            if (Input.GetMouseButtonDown(0))
-            {
-                Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
-                RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
-                
-                if (hit.collider != null || card_object_id == 4)
-                {
-                    //hit.transform.name == this.name  <= original condiiton
-                    if ( card_object_id == 4) // <== debug condition
-                    {
-                        var Player = GameObject.Find("LocalPlayer");
-                        var PlayerComp = Player.GetComponent<PlayerConnectionScript>();
-                       
-                        if (PlayerComp.firstCard == 0)
-                        {
-                            PlayerComp.firstCard = card_object_id;
-                        }
+            if (_highlight) {
+                transform.localScale = new Vector3(1.1F, 1.1F, transform.localScale.z);
+            } 
+            else {
+                transform.localScale = new Vector3(1F, 1F, transform.localScale.z);
 
-                        else if(PlayerComp.firstCard == this.card_object_id)
-                        {
-                            PlayerComp.firstCard = 0;
-                        }
-
-                        else if(PlayerComp.secondCard == 0)
-                        {
-                            PlayerComp.secondCard = card_object_id;
-                        }
-
-                        else if(PlayerComp.secondCard == card_object_id)
-                        {
-                            PlayerComp.secondCard = 0;
-                        }
-                    }
-                }
             }
 
         }
         //TODO: Implementation function that retrieves data from JSON file//
         //Add JSON files in folder \WarStone\Assets\Data//
         public void DeserializeCard(int CardID) {
+            this.currentCardID = CardID;
             var CardData = new Card();
 
             var jsonString = File.ReadAllText(@"Assets/Cards.json");
@@ -130,13 +91,6 @@ namespace SA {
             //Initialize the sprite for the card
             this.image.sprite = Resources.Load<Sprite>(CardData.gfx_path);
 
-        }
-
-        [Command]
-        void CmdSetAuthority(NetworkIdentity grabID) {
-  
-
-            grabID.AssignClientAuthority(connectionToClient);
         }
 
     }

@@ -6,24 +6,24 @@
       "race": "Skaven",
       "category": "melee",
       "skill": "taunt",
-      "health": 2,
+      "health": 1,
       "special": 1,
-      "strength": 4,
-      "cost": 8,
-      "gfx_path": "CardArt/Clanrat"
+      "strength": 2,
+      "cost": 100,
+      "gfx_path": "CardArt/Skaven/Clanrat"
     },
 
     {
       "id": 1,
-      "name": "TonTon",
-      "race": "Goblin",
+      "name": "Slave",
+      "race": "Skaven",
       "category": "melee",
       "skill": "taunt",
-      "health": 8,
+      "health": 1,
       "special": 5,
-      "strength": 3,
-      "cost": 25,
-      "gfx_path": "CardArt/TonTon"
+      "strength": 1,
+      "cost": 50,
+      "gfx_path": "CardArt/Skaven/Slave"
     },
 
     {
@@ -32,11 +32,11 @@
       "race": "Skaven",
       "category": "ranged",
       "skill": "heal",
-      "health": 3,
+      "health": 2,
       "special": 12,
-      "strength": 1,
-      "cost": 15,
-      "gfx_path": "CardArt/Plague_Priest"
+      "strength": 4,
+      "cost": 300,
+      "gfx_path": "CardArt/Skaven/Plague_Priest"
     },
 
     {
@@ -45,11 +45,157 @@
       "race": "Skaven",
       "category": "melee",
       "skill": "xD",
-      "health": 17,
+      "health": 7,
+      "special": 6,
+      "strength": 5,
+      "cost": 700,
+      "gfx_path": "CardArt/Skaven/Rat_Ogre"
+    },
+	
+	{
+      "id": 4,
+      "name": "Ratling Gun",
+      "race": "Skaven",
+      "category": "melee",
+      "skill": "xD",
+      "health": 3,
       "special": 6,
       "strength": 7,
-      "cost": 12,
-      "gfx_path": "CardArt/Rat_Ogre"
+      "cost": 500,
+      "gfx_path": "CardArt/Skaven/Ratling_Gun"
+    },
+	{
+      "id": 5,
+      "name": "Stormvermin",
+      "race": "Skaven",
+      "category": "melee",
+      "skill": "xD",
+      "health": 4,
+      "special": 6,
+      "strength": 5,
+      "cost": 400,
+      "gfx_path": "CardArt/Skaven/Stormvermin"
+    },
+	{
+      "id": 6,
+      "name": "Gutter Runners",
+      "race": "Skaven",
+      "category": "melee",
+      "skill": "xD",
+      "health": 1,
+      "special": 6,
+      "strength": 3,
+      "cost": 200,
+      "gfx_path": "CardArt/Skaven/Gutter_Runner"
+    },
+	{
+      "id": 7,
+      "name": "Doomwheel",
+      "race": "Skaven",
+      "category": "melee",
+      "skill": "xD",
+      "health": 7,
+      "special": 6,
+      "strength": 10,
+      "cost": 800,
+      "gfx_path": "CardArt/Skaven/Doomwheel"
+    },
+	{
+      "id": 8,
+      "name": "Miner",
+      "race": "Dwarves",
+      "category": "melee",
+      "skill": "xD",
+      "health": 2,
+      "special": 6,
+      "strength": 1,
+      "cost": 100,
+      "gfx_path": "CardArt/Dwarves/Miner"
+    },
+	{
+      "id": 9,
+      "name": "Longbeard",
+      "race": "Dwarves",
+      "category": "melee",
+      "skill": "xD",
+      "health": 3,
+      "special": 6,
+      "strength": 1,
+      "cost": 200,
+      "gfx_path": "CardArt/Dwarves/Longbeard"
+    },
+	{
+      "id": 10,
+      "name": "Ironbreaker",
+      "race": "Dwarves",
+      "category": "melee",
+      "skill": "xD",
+      "health": 4,
+      "special": 6,
+      "strength": 2,
+      "cost": 300,
+      "gfx_path": "CardArt/Dwarves/Ironbreaker"
+    },
+	{
+      "id": 11,
+      "name": "Slayer",
+      "race": "Dwarves",
+      "category": "melee",
+      "skill": "xD",
+      "health": 2,
+      "special": 6,
+      "strength": 6,
+      "cost": 400,
+      "gfx_path": "CardArt/Dwarves/Slayer"
+    },
+	{
+      "id": 12,
+      "name": "Giant Slayer",
+      "race": "Dwarves",
+      "category": "melee",
+      "skill": "xD",
+      "health": 2,
+      "special": 6,
+      "strength": 8,
+      "cost": 500,
+      "gfx_path": "CardArt/Dwarves/Giant_Slayer"
+    },
+	{
+      "id": 13,
+      "name": "Irondrake",
+      "race": "Dwarves",
+      "category": "melee",
+      "skill": "xD",
+      "health": 4,
+      "special": 6,
+      "strength": 8,
+      "cost": 700,
+      "gfx_path": "CardArt/Dwarves/Irondrake"
+    },
+	{
+      "id": 14,
+      "name": "Gyrobomber",
+      "race": "Dwarves",
+      "category": "melee",
+      "skill": "xD",
+      "health": 7,
+      "special": 6,
+      "strength": 10,
+      "cost": 800,
+      "gfx_path": "CardArt/Dwarves/Gyrobomber"
+    },
+	{
+      "id": 15,
+      "name": "Organ_Gun",
+      "race": "Dwarves",
+      "category": "melee",
+      "skill": "xD",
+      "health": 5,
+      "special": 6,
+      "strength": 5,
+      "cost": 500,
+      "gfx_path": "CardArt/Dwarves/Organ_Gun"
     }
+	
   ]
 }
