@@ -20,23 +20,31 @@ public class PlayerConnectionScript : NetworkBehaviour
 
     [Command]
     public void CmdSendMovement(int FirstCard, int SecondCard) {
-        var firstViz = GameObject.Find(FirstCard.ToString()).GetComponent<SA.CardViz>();
-        var secondViz = GameObject.Find(SecondCard.ToString()).GetComponent<SA.CardViz>();
-        firstViz.healthStat -= secondViz.strengthStat;
-        secondViz.healthStat -= firstViz.strengthStat;
+        if (FirstCard != 0 && SecondCard != 0) {
+            var firstViz = GameObject.Find(FirstCard.ToString()).GetComponent<SA.CardViz>();
+            var secondViz = GameObject.Find(SecondCard.ToString()).GetComponent<SA.CardViz>();
+            firstViz.healthStat -= secondViz.strengthStat;
+            secondViz.healthStat -= firstViz.strengthStat;
+        }
+
         var Server = GameObject.Find("ServerObject");
         var ServerComp = Server.GetComponent<ServerScript>();
-
         ServerComp.RegisterMove(FirstCard, SecondCard);
 
     }
 
     [Command]
-    public void CmdPlayer1CardDeployed(GameObject card)
-    {
+    public void CmdPlayer1CardDeployed(GameObject card) {
         var Server = GameObject.Find("ServerObject");
         var ServerComp = Server.GetComponent<ServerScript>();
         ServerComp.RpcPlayer1CardDeployed(card);
+    }
+
+    [Command]
+    public void CmdPlayer2CardDeployed(GameObject card) {
+        var Server = GameObject.Find("ServerObject");
+        var ServerComp = Server.GetComponent<ServerScript>();
+        ServerComp.RpcPlayer2CardDeployed(card);
     }
 
     // Update is called once per frame

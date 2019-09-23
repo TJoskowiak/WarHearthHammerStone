@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -21,16 +22,20 @@ namespace SA.GameStates
                         break;
                     }
                 }
-            }else if (Input.GetMouseButtonDown(1)) {
+            } else if (Input.GetMouseButtonDown(1)) {
                 var Player = GameObject.Find("LocalPlayer");
                 var PlayerComp = Player.GetComponent<PlayerConnectionScript>();
                 PlayerComp.CmdSendMovement(PlayerComp.firstCard, PlayerComp.secondCard);
 
+                try {
+                    var firstViz = GameObject.Find(PlayerComp.firstCard.ToString()).GetComponent<SA.CardViz>();
+                    var secondViz = GameObject.Find(PlayerComp.secondCard.ToString()).GetComponent<SA.CardViz>();
 
-                var firstViz = GameObject.Find(PlayerComp.firstCard.ToString()).GetComponent<SA.CardViz>();
-                var secondViz = GameObject.Find(PlayerComp.secondCard.ToString()).GetComponent<SA.CardViz>();
-                firstViz._highlight = false;
-                secondViz._highlight = false;
+                    firstViz._highlight = false;
+                    secondViz._highlight = false;
+                } catch (Exception e) {
+                    Debug.Log(e);
+                }
                 PlayerComp.firstCard = 0;
                 PlayerComp.secondCard = 0;
 

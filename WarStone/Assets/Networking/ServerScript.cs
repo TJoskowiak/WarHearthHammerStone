@@ -48,4 +48,20 @@ public class ServerScript : NetworkBehaviour
             card.GetComponent<SA.CardInstance>().currentLogic = Resources.Load<SA.GameElements.CardElementLogic>(@"Data/Game Elements/My Desk Card");
         }
     }
+
+    [ClientRpc]
+    public void RpcPlayer2CardDeployed(GameObject card) {
+        if (card == null) return;
+
+        //typ kartu
+        //if(card.instance.cardViz.cardType == MinionCard)
+        {
+            var grid = GameObject.Find("Player2CardsDown");
+            card.transform.SetParent(grid.transform);
+            card.transform.localPosition = Vector3.zero;
+            card.transform.localScale = Vector3.one;
+            card.GetComponent<SA.CardInstance>().currentLogic = Resources.Load<SA.GameElements.CardElementLogic>(@"Data/Game Elements/Opponent Desk Card");
+        }
+    }
+
 }

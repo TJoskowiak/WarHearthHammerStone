@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 namespace SA
 {
-    public class CardInstance : MonoBehaviour, IClicable
+    public class CardInstance : NetworkBehaviour, IClicable
     {
         public SA.GameElements.CardElementLogic currentLogic;
         public CardViz cardViz;
@@ -11,6 +12,10 @@ namespace SA
         void Start()
         {
             cardViz = GetComponent<CardViz>();
+
+            if(!isServer) {
+
+            }
         }
 
         public void onClick()

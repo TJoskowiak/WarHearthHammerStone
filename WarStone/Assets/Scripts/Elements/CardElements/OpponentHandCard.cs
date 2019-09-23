@@ -3,8 +3,8 @@
 
 namespace SA.GameElements
 {
-    [CreateAssetMenu(menuName = "Game Element/My Hand Card")]
-    public class MyHandCard : CardElementLogic
+    [CreateAssetMenu(menuName = "Game Element/Opponent Hand Card")]
+    public class OpponentHandCard : CardElementLogic
     {
         public SO.GameEvent onCurretCardSelected;
         public CardVariable currentCard;
@@ -15,7 +15,7 @@ namespace SA.GameElements
         }
 
         public override void onDrag(CardInstance instance) {
-            if (GameObject.Find("LocalPlayer").GetComponent<PlayerConnectionScript>().isServer) {
+            if (!GameObject.Find("LocalPlayer").GetComponent<PlayerConnectionScript>().isServer) {
                 currentCard.SetInstance(instance);
                 Settings.gameManager.SetState(holdingCard);
                 onCurretCardSelected.Raise();
@@ -23,7 +23,6 @@ namespace SA.GameElements
         }
 
         public override void onHighlight(CardInstance instance) {
-            // instance.PopupHandCard();
         }
     }
 }

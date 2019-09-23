@@ -25,9 +25,8 @@ namespace SA.GameElements
 
         }
 
-        public override void onDrag(CardInstance instance)
-        {
-            
+        public override void onDrag(CardInstance instance) {
+
         }
 
         public override void onHighlight(CardInstance instance) {
