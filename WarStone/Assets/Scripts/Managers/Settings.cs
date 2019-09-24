@@ -46,6 +46,12 @@ namespace SA
                 ChangeStateToOpponentControlState();
             }
         }
+
+        public static void SetParentToObject(GameObject child, SO.TransformVariable parent){
+            child.transform.SetParent(parent.value.transform);
+            child.transform.localPosition = Vector3.zero;
+            child.transform.localScale = Vector3.one;
+        }
     }
 
 

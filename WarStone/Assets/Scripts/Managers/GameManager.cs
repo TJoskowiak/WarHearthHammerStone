@@ -13,8 +13,9 @@ namespace SA
     {
         public State currentState;
         public GameObject CardPrefab;
-        public SO.TransformVariable HandTransform;
-        public GameElements.CardElementLogic HandLogic;
+        public Player player1;
+        public Player player2;
+
 
         private void Start()
         {
@@ -40,21 +41,10 @@ namespace SA
         }
 
         public void CreateHandCard()
-        {
-            GameObject obj = Instantiate(CardPrefab) as GameObject;
-            CardViz viz = obj.gameObject.GetComponentInParent<CardViz>();
-            viz.card_json_id = Random.Range(1, 6);
-            CardInstance cardInstance = obj.AddComponent<CardInstance>();
-            // CardInstance cardInstance = obj.gameObject.GetComponentInParent<CardInstance>();
-            cardInstance.cardViz = viz;
-            cardInstance.currentLogic = HandLogic;
-            //obj.gameObject.GetComponent<CardViz>().DeserializeCard(4);
-            obj.SetActive(true);
-            obj.transform.SetParent(HandTransform.value.transform);
-            obj.transform.localPosition = Vector3.zero;
-            //obj.transform.rotation = Quaternion.Euler(0, 0, 180);
-            obj.transform.localScale = Vector3.one;
-            Debug.Log("Stworzylem");
+        {            
+            GameObject obj = Instantiate(CardPrefab) as GameObject;            
+            player1.CreateHandCard(obj);
+            NetworkServer.Spawn(obj);
         }
 
 
