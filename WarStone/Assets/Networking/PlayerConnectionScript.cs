@@ -47,6 +47,12 @@ public class PlayerConnectionScript : NetworkBehaviour
         ServerComp.RpcPlayer2CardDeployed(card);
     }
 
+    [Command]
+    public void CmdSpawnCard(GameObject card)
+    {
+        NetworkServer.Spawn(card);
+    }
+
     // Update is called once per frame
     void Update() {
 

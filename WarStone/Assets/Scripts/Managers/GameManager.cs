@@ -13,15 +13,13 @@ namespace SA
     {
         public State currentState;
         public GameObject CardPrefab;
-        public Player player1;
-        public Player player2;
         public Player currentPlayer;
 
 
         private void Start()
         {
-            player1.StartingCardID = 0;
-            player2.StartingCardID = 100;
+            Resources.Load<Player>(@"Data/Variables/Player1").StartingCardID = 0;
+            Resources.Load<Player>(@"Data/Variables/Player2").StartingCardID = 100;
             Settings.gameManager = this;
 
 
@@ -52,7 +50,9 @@ namespace SA
         {            
             GameObject obj = Instantiate(CardPrefab) as GameObject;
             currentPlayer.CreateHandCard(obj);
-            NetworkServer.Spawn(obj);
+            //NetworkServer.Spawn(obj);
+            var playerConObj = GameObject.Find("LocalPlayer").GetComponent<PlayerConnectionScript>();
+            playerConObj.CmdSpawnCard(obj);
         }
 
 

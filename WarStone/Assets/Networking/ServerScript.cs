@@ -45,8 +45,12 @@ public class ServerScript : NetworkBehaviour
             card.transform.SetParent(grid.transform);
             card.transform.localPosition = Vector3.zero;
             card.transform.localScale = Vector3.one;
-            SA.CardInstance cardInstance = card.AddComponent<SA.CardInstance>();
-            cardInstance.currentLogic = Resources.Load<SA.GameElements.CardElementLogic>(@"Data/Game Elements/My Desk Card");      
+            if (!isServer){
+                SA.CardInstance cardInstance = card.AddComponent<SA.CardInstance>();
+            }
+            card.GetComponentInParent<SA.CardInstance>().currentLogic = Resources.Load<SA.GameElements.CardElementLogic>(@"Data/Game Elements/My Desk Card");
+            if (card.GetComponentInParent<SA.CardInstance>() == null)
+                Debug.Log("CardInstanceNull");
         }
     }
 
@@ -54,15 +58,17 @@ public class ServerScript : NetworkBehaviour
     public void RpcPlayer2CardDeployed(GameObject card) {
         if (card == null) return;
 
-        //typ kartu
-        //if(card.instance.cardViz.cardType == MinionCard)
         {
             var grid = GameObject.Find("Player2CardsDown");
             card.transform.SetParent(grid.transform);
             card.transform.localPosition = Vector3.zero;
             card.transform.localScale = Vector3.one;
-            SA.CardInstance cardInstance = card.AddComponent<SA.CardInstance>();
-            cardInstance.currentLogic = Resources.Load<SA.GameElements.CardElementLogic>(@"Data/Game Elements/Opponent Desk Card");
+            if (!isServer){
+                SA.CardInstance cardInstance = card.AddComponent<SA.CardInstance>();
+            }
+            card.GetComponentInParent<SA.CardInstance>().currentLogic = Resources.Load<SA.GameElements.CardElementLogic>(@"Data/Game Elements/Opponent Desk Card");
+            if (card.GetComponentInParent<SA.CardInstance>() == null)
+                Debug.Log("CardInstanceNull");
         }
     }
 
