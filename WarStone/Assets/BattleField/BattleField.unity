@@ -1521,6 +1521,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MyHand: {fileID: 1718135886}
+  Player1CardsDown: {fileID: 1588402132}
+  Player2CardsDown: {fileID: 665306134}
 --- !u!114 &665629789
 MonoBehaviour:
   m_ObjectHideFlags: 0

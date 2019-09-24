@@ -45,6 +45,7 @@ public class ServerScript : NetworkBehaviour
             card.transform.SetParent(grid.transform);
             card.transform.localPosition = Vector3.zero;
             card.transform.localScale = Vector3.one;
+            card.transform.localRotation = Quaternion.Euler(0, 0, 0);
             if (!isServer){
                 SA.CardInstance cardInstance = card.AddComponent<SA.CardInstance>();
             }
@@ -63,6 +64,8 @@ public class ServerScript : NetworkBehaviour
             card.transform.SetParent(grid.transform);
             card.transform.localPosition = Vector3.zero;
             card.transform.localScale = Vector3.one;
+            card.transform.localRotation = Quaternion.Euler(0, 0, 0);
+
             if (!isServer){
                 SA.CardInstance cardInstance = card.AddComponent<SA.CardInstance>();
             }
