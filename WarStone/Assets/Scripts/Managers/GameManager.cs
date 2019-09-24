@@ -44,10 +44,11 @@ namespace SA
             GameObject obj = Instantiate(CardPrefab) as GameObject;
             CardViz viz = obj.gameObject.GetComponentInParent<CardViz>();
             viz.card_json_id = Random.Range(1, 6);
-            CardInstance cardInstance = obj.gameObject.GetComponentInParent<CardInstance>();
+            CardInstance cardInstance = obj.AddComponent<CardInstance>();
+            // CardInstance cardInstance = obj.gameObject.GetComponentInParent<CardInstance>();
             cardInstance.cardViz = viz;
             cardInstance.currentLogic = HandLogic;
-           //obj.gameObject.GetComponent<CardViz>().DeserializeCard(4);
+            //obj.gameObject.GetComponent<CardViz>().DeserializeCard(4);
             obj.SetActive(true);
             obj.transform.SetParent(HandTransform.value.transform);
             obj.transform.localPosition = Vector3.zero;
