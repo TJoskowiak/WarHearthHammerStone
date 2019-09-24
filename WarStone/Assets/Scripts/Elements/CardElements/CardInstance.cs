@@ -33,33 +33,5 @@ namespace SA
         {
             currentLogic.onDrag(this);
         }
-
-        /*public void PopupHandCard()
-        {
-            Debug.Log("Powieksz");
-            GameObject obj = gameObject.transform.parent.gameObject;
-            if(CardShowed == null)
-            {
-                GridLayoutGroup layout = GameObject.Find("My Hand").GetComponentInParent<GridLayoutGroup>();
-
-                if (layout != null)
-                {
-                    Debug.Log("JestLayot");
-                    layout.enabled = false;
-                    CardShowed = this;
-                    gameObject.GetComponentInParent<RectTransform>().Translate(0, 40, 0);
-                }
-            }
-            else if(CardShowed != this)
-            {
-                GridLayoutGroup layout = GameObject.Find("My Hand").GetComponentInParent<GridLayoutGroup>();
-                layout.enabled = true;
-                
-                layout.enabled = false;
-                gameObject.GetComponentInParent<RectTransform>().Translate(0, 40, 0);
-                CardShowed = this;
-            }
-        }
-        */
     }
 }

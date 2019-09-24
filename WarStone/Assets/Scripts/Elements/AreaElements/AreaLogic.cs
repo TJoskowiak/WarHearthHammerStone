@@ -4,7 +4,8 @@ namespace SA.GameElements
 {
     public abstract class AreaLogic : ScriptableObject
     {
-        public abstract void Exeute();    
+        public abstract void Exeute();
+        public abstract bool IsMyArea();
 
     }
 }

@@ -42,9 +42,6 @@ namespace SA
         public int strengthStat { get => _strengthStat; set => _strengthStat = value; }
 
         private void Start() {
-            if (!isServer) {
-                transform.Rotate(new Vector3(0, 0, 180));
-            }
             DeserializeCard(card_json_id);
             this.name = card_object_id.ToString();
         }

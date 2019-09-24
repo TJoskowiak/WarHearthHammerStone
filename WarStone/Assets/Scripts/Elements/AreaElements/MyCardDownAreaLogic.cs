@@ -7,13 +7,15 @@ namespace SA.GameElements
     {
         public CardVariable card;
         public SO.TransformVariable areaGrid;
-        //public CardType MinionCard;
-
-
 
         public override void Exeute()
         {
             GameObject.Find("LocalPlayer").GetComponent<PlayerConnectionScript>().CmdPlayer1CardDeployed(card.instance.gameObject);
+        }
+
+        public override bool IsMyArea()
+        {
+            return GameObject.Find("ServerObject").GetComponent<ServerScript>().isServer;
         }
     }
 }

@@ -9,16 +9,9 @@ namespace SA.GameElements
 
 
         public void Test(bool value) {
-            var xyz = GameObject.Find("ServerObject").GetComponent<ServerScript>();
-            if (xyz.isServer) {
-                if (this.name == "My Card Down Area") {
-                    gameObject.SetActive(value);
-                }
-
-            } else {
-                if (this.name == "Opponent Card Down Area") {
-                    gameObject.SetActive(value);
-                }
+            if (areaLogic.IsMyArea())
+            {
+                gameObject.SetActive(value);
             }
         }
 
