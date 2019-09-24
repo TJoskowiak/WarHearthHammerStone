@@ -14,6 +14,7 @@ namespace SA
         public State currentState;
         public GameObject CardPrefab;
         public Player currentPlayer;
+        public Player[] Players;
 
 
         private void Start()
@@ -46,13 +47,16 @@ namespace SA
             currentState = state;
         }
 
+        public Player GetPlayer(int ID)
+        {
+            return Players[ID - 1];
+        }
+
         public void CreateHandCard()
         {            
-            GameObject obj = Instantiate(CardPrefab) as GameObject;
-            currentPlayer.CreateHandCard(obj);
-            //NetworkServer.Spawn(obj);
+            //Spawn object
             var playerConObj = GameObject.Find("LocalPlayer").GetComponent<PlayerConnectionScript>();
-            playerConObj.CmdSpawnCard(obj);
+            playerConObj.CmdSpawnCard(currentPlayer.PlayerID);
         }
 
 

@@ -48,10 +48,27 @@ public class PlayerConnectionScript : NetworkBehaviour
     }
 
     [Command]
-    public void CmdSpawnCard(GameObject card)
+    public void CmdSpawnCard(int PlayerID)
     {
-        NetworkServer.Spawn(card);
+        GameObject cardObj = Instantiate(SA.Settings.gameManager.CardPrefab) as GameObject;
+        NetworkServer.Spawn(cardObj);
+        SA.Settings.gameManager.GetPlayer(PlayerID).AssignParametersToCard(cardObj);
+        SA.CardViz viz = cardObj.gameObject.GetComponentInParent<SA.CardViz>();
+        RpcSetToHand(cardObj, viz.card_object_id , viz.card_json_id ,PlayerID);
     }
+
+    
+    [ClientRpc]
+    public void RpcSetToHand(GameObject card, int CardID, int CardJsonID, int PlayerID)
+    {
+        if (card == null) return;
+        SA.CardViz viz = card.gameObject.GetComponentInParent<SA.CardViz>();
+        viz.card_json_id = CardJsonID;
+        viz.card_object_id = CardID;
+        SA.Settings.gameManager.GetPlayer(PlayerID).SetPositonToHand(card);
+    }
+
+
 
     // Update is called once per frame
     void Update() {
