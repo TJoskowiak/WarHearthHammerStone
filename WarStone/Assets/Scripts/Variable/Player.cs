@@ -9,9 +9,28 @@ namespace SA
     {
         public int PlayerID;
         public SO.TransformVariable HandTransform;
+        public SO.TransformVariable GraveyardTransform;
         public GameElements.CardElementLogic HandLogic;
         public GameElements.CardElementLogic deskCardLogic;
         public int StartingCardID;
+        public ArrayList AvailableCards = new ArrayList(15) { 1, 1, 1, 2, 3, 3, 4, 4, 4, 5, 6, 9, 9, 14, 15 };
+        public ArrayList ShuffledCards;
+
+
+        private void ShuffleCards()
+        {
+            ArrayList source = new ArrayList(AvailableCards);
+            ArrayList output = new ArrayList();
+            System.Random generator = new System.Random();
+
+            while (source.Count > 0)
+            {
+                int position = generator.Next(source.Count);
+                output.Add(source[position]);
+                source.RemoveAt(position);
+            }
+            ShuffledCards = output;
+        }
 
         public void AssignParametersToCard(GameObject cardObj)
         {
@@ -27,8 +46,15 @@ namespace SA
             cardInstance.cardViz = viz;
             cardInstance.currentLogic = HandLogic;
 
+            cardObj.gameObject.GetComponentInParent<CardInstance>().setOwner(this);
+
             cardObj.SetActive(true);
             Settings.SetParentToObject(cardObj, HandTransform);
+        }
+
+        public void KillUnit(GameObject cardObj)
+        {
+            Settings.SetParentToObject(cardObj, GraveyardTransform);
         }
 
 

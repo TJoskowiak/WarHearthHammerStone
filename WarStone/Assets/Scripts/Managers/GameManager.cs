@@ -19,8 +19,8 @@ namespace SA
 
         private void Start()
         {
-            Resources.Load<Player>(@"Data/Variables/Player1").StartingCardID = 0;
-            Resources.Load<Player>(@"Data/Variables/Player2").StartingCardID = 100;
+            Resources.Load<Player>(@"Data/Variables/Player1").StartingCardID = 1;
+            Resources.Load<Player>(@"Data/Variables/Player2").StartingCardID = 101;
             Settings.gameManager = this;
 
 

@@ -7,7 +7,9 @@ namespace SA
     {
         public SA.GameElements.CardElementLogic currentLogic;
         public CardViz cardViz;
-        static CardInstance CardShowed = null; 
+        static CardInstance CardShowed = null;
+
+        private Player owner;
 
         void Start()
         {
@@ -32,6 +34,19 @@ namespace SA
         public void onDrag()
         {
             currentLogic.onDrag(this);
+        }
+
+        public void setOwner(Player owner)
+        {
+            this.owner = owner;
+        }
+
+        public void takeDMG(CardInstance opponent)
+        {
+            cardViz.healthStat -= opponent.cardViz.strengthStat;
+            if (cardViz.healthStat <= 0)
+                owner.KillUnit(this.gameObject);
+
         }
     }
 }

@@ -21,15 +21,28 @@ public class PlayerConnectionScript : NetworkBehaviour
     [Command]
     public void CmdSendMovement(int FirstCard, int SecondCard) {
         if (FirstCard != 0 && SecondCard != 0) {
-            var firstViz = GameObject.Find(FirstCard.ToString()).GetComponent<SA.CardViz>();
-            var secondViz = GameObject.Find(SecondCard.ToString()).GetComponent<SA.CardViz>();
-            firstViz.healthStat -= secondViz.strengthStat;
-            secondViz.healthStat -= firstViz.strengthStat;
+
+
+            var firstCard = GameObject.Find(FirstCard.ToString()) as GameObject;
+            var secondCard = GameObject.Find(SecondCard.ToString()) as GameObject;
+            RpcSetDMG(firstCard, secondCard);
+            RpcSetDMG(secondCard, firstCard);
         }
 
         var Server = GameObject.Find("ServerObject");
         var ServerComp = Server.GetComponent<ServerScript>();
         ServerComp.RegisterMove(FirstCard, SecondCard);
+
+    }
+
+
+    [ClientRpc]
+    public void RpcSetDMG(GameObject attacker, GameObject victim)
+    {
+        var attackerCard = attacker.GetComponent<SA.CardInstance>();
+        var victimCard = victim.GetComponent<SA.CardInstance>();
+
+        victimCard.takeDMG(attackerCard);
 
     }
 
@@ -67,6 +80,8 @@ public class PlayerConnectionScript : NetworkBehaviour
         viz.card_object_id = CardID;
         SA.Settings.gameManager.GetPlayer(PlayerID).SetPositonToHand(card);
     }
+
+
 
 
 
