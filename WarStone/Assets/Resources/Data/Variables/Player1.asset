@@ -15,3 +15,4 @@ MonoBehaviour:
   HandTransform: {fileID: 11400000, guid: 3adc0e40a1b4c0c45b1017ed7916f8ca, type: 2}
   HandLogic: {fileID: 11400000, guid: edc5bc8940461df409986ff19012e01c, type: 2}
   deskCardLogic: {fileID: 11400000, guid: 5edef82679dbfbf4191c0bff1faed98d, type: 2}
+  CardID: 4

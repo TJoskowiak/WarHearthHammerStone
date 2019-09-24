@@ -17,7 +17,9 @@ namespace SA
     public class CardViz : NetworkBehaviour
     {
         //To be deleted. Or left. Not sure though what will call desrialize on card. Probably some battlefield controller that will also update the values on the cards.
+        [SyncVar]
         public int card_json_id = 1;
+        [SyncVar]
         public int card_object_id = 0;
 
         public int currentCardID;
