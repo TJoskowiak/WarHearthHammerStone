@@ -19,6 +19,8 @@ namespace SA
 
         private void Start()
         {
+            player1.StartingCardID = 0;
+            player2.StartingCardID = 100;
             Settings.gameManager = this;
             if (!isServer) {
                 Settings.ChangeStateToOpponentControlState();
