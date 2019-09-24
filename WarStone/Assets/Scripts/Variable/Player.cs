@@ -9,6 +9,7 @@ namespace SA
     {
         public SO.TransformVariable HandTransform;
         public GameElements.CardElementLogic HandLogic;
+        public GameElements.CardElementLogic deskCardLogic;
 
         public void CreateHandCard(GameObject cardObj)
         {

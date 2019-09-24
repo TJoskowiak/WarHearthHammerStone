@@ -45,7 +45,8 @@ public class ServerScript : NetworkBehaviour
             card.transform.SetParent(grid.transform);
             card.transform.localPosition = Vector3.zero;
             card.transform.localScale = Vector3.one;
-            card.GetComponent<SA.CardInstance>().currentLogic = Resources.Load<SA.GameElements.CardElementLogic>(@"Data/Game Elements/My Desk Card");
+            SA.CardInstance cardInstance = card.AddComponent<SA.CardInstance>();
+            cardInstance.currentLogic = Resources.Load<SA.GameElements.CardElementLogic>(@"Data/Game Elements/My Desk Card");      
         }
     }
 
