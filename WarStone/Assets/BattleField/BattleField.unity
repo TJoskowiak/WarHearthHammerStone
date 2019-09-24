@@ -264,7 +264,8 @@ MonoBehaviour:
   CardPrefab: {fileID: 459087192063210939, guid: a9a511cd857fa8543821f4a79fba6c76,
     type: 3}
   player1: {fileID: 11400000, guid: 457a7e4a374e921448e03a206e805aef, type: 2}
-  player2: {fileID: 0}
+  player2: {fileID: 11400000, guid: ffa6be0902d424b418f34061fd07694c, type: 2}
+  currentPlayer: {fileID: 0}
 --- !u!4 &105242407
 Transform:
   m_ObjectHideFlags: 0
@@ -337,7 +338,7 @@ PrefabInstance:
     - target: {fileID: 5727967577904609930, guid: a9a511cd857fa8543821f4a79fba6c76,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -340.50006
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5727967577904609930, guid: a9a511cd857fa8543821f4a79fba6c76,
         type: 3}
@@ -1808,8 +1809,9 @@ GameObject:
   - component: {fileID: 665629787}
   - component: {fileID: 665629786}
   - component: {fileID: 665629788}
+  - component: {fileID: 665629789}
   m_Layer: 5
-  m_Name: Opponent Hand
+  m_Name: Player2 Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1822,7 +1824,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 665629784}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1832,10 +1834,10 @@ RectTransform:
   - {fileID: 556167292}
   m_Father: {fileID: 1918605176}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 50, y: -20}
+  m_AnchoredPosition: {x: -49.2, y: -20}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &665629786
@@ -1908,6 +1910,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MyHand: {fileID: 1718135886}
+--- !u!114 &665629789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665629784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df6b98378e7400f428d104dd467f342a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transformVariable: {fileID: 11400000, guid: 6234470217f6667429ac7007465ecb6c, type: 2}
 --- !u!1 &697528498
 GameObject:
   m_ObjectHideFlags: 0
@@ -2389,7 +2404,7 @@ PrefabInstance:
     - target: {fileID: 5727967577904609930, guid: a9a511cd857fa8543821f4a79fba6c76,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -340.5001
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5727967577904609930, guid: a9a511cd857fa8543821f4a79fba6c76,
         type: 3}
@@ -2563,7 +2578,7 @@ PrefabInstance:
     - target: {fileID: 5727967577904609930, guid: a9a511cd857fa8543821f4a79fba6c76,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -340.5001
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5727967577904609930, guid: a9a511cd857fa8543821f4a79fba6c76,
         type: 3}
@@ -3440,7 +3455,7 @@ PrefabInstance:
     - target: {fileID: 5727967577904609930, guid: a9a511cd857fa8543821f4a79fba6c76,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -340.5001
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5727967577904609930, guid: a9a511cd857fa8543821f4a79fba6c76,
         type: 3}
@@ -3831,7 +3846,7 @@ GameObject:
   - component: {fileID: 1718135890}
   - component: {fileID: 1718135891}
   m_Layer: 5
-  m_Name: My Hand
+  m_Name: Player1 Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5068,8 +5083,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.4, y: 33.1}
-  m_SizeDelta: {x: 3609.4, y: 2240.2}
+  m_AnchoredPosition: {x: -31, y: 48}
+  m_SizeDelta: {x: 4563, y: 3014}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2073726986
 MonoBehaviour:

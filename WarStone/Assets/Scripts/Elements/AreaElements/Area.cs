@@ -9,15 +9,13 @@ namespace SA.GameElements
 
 
         public void Test(bool value) {
-            if (areaLogic.IsMyArea())
-            {
+            if (areaLogic.IsMyArea()){
                 gameObject.SetActive(value);
             }
         }
 
         public void onDrop() {
             areaLogic.Exeute();
-
         }
     }
 }

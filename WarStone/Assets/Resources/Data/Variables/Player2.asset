@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 368e502cf7c897d4c99d659d6f8ee6d9, type: 3}
   m_Name: Player2
   m_EditorClassIdentifier: 
-  HandTransform: {fileID: 11400000, guid: 9d0c629f2226f0849b5256a65e60e0e8, type: 2}
+  HandTransform: {fileID: 11400000, guid: 6234470217f6667429ac7007465ecb6c, type: 2}
   HandLogic: {fileID: 11400000, guid: 7e06b9a27d5dbe84998920255ec4f618, type: 2}
   deskCardLogic: {fileID: 11400000, guid: 8d4ca5c8e2eb7814c849d766b0272931, type: 2}
-  CardID: 100
+  StartingCardID: 105

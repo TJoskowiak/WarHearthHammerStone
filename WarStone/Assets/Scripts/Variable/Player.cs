@@ -14,8 +14,6 @@ namespace SA
 
         public void CreateHandCard(GameObject cardObj)
         {
-           
-
             CardViz viz = cardObj.gameObject.GetComponentInParent<CardViz>();
             viz.card_json_id = Random.Range(1, 6);
             viz.card_object_id = StartingCardID++;
