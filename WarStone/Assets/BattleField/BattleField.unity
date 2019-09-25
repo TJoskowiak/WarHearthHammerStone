@@ -545,6 +545,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 457a7e4a374e921448e03a206e805aef, type: 2}
   - {fileID: 11400000, guid: ffa6be0902d424b418f34061fd07694c, type: 2}
   stateManager: {fileID: 1170270663}
+  holder: {fileID: 2023205082}
 --- !u!4 &105242407
 Transform:
   m_ObjectHideFlags: 0
