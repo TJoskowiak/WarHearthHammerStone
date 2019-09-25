@@ -19,13 +19,38 @@ namespace SA
         public int StartingCardID;
 
         public List<int> ShuffledCards;
+        private int ShuffledCardsCounter;
 
         private static int HAND_SIZE = 5;
         private static int DESK_SIZE = 6;
         private ResourceHolder resourceHolder;
+        private HeroIconScript IconScript;
+        private GameObject deck;
 
         public int hitPoints;
         public int maxHitPoints;
+
+        public void setDeck(GameObject deck)
+        {
+            this.deck = deck;
+        }
+
+        public void hideDeck()
+        {
+            deck.SetActive(false);
+        }
+
+        public void setIconScript(HeroIconScript icon)
+        {
+            IconScript = icon;
+        }
+
+        public void updateHPBar()
+        {
+            if(maxHitPoints != 0)
+                IconScript.ChangePercentage((hitPoints * 100 )/ maxHitPoints );
+
+        }
 
         public void setStartedHitPoints()
         {
@@ -69,11 +94,17 @@ namespace SA
         public void ShuffleCards()
         {
             ShuffledCards = Player_Race.ShuffleCards();
+            ShuffledCardsCounter = ShuffledCards.Count;
         }
         public bool CheckIfAnyCardLeft()
         {
-            return ShuffledCards.Count > 0;
+            return ShuffledCardsCounter > 0;
         } 
+
+        public void removeCardFromDeckCounter()
+        {
+            ShuffledCardsCounter--;
+        }
 
         private int PickCard()
         {

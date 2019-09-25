@@ -28,19 +28,24 @@ public class PlayerConnectionScript : NetworkBehaviour
 
 
     [Command]
-    public void CmdSendMovement(int FirstCard, int SecondCard) {
-        if (FirstCard != 0 && SecondCard != 0) {
+    public void CmdSendMovement(int FirstCard, int SecondCard)
+    {
+        var Server = GameObject.Find("ServerObject");
+        var ServerComp = Server.GetComponent<ServerScript>();
+        ServerComp.RegisterMove(FirstCard, SecondCard);
+
+        if (FirstCard != 0 && SecondCard != 0)
+        {
 
 
             var firstCard = GameObject.Find(FirstCard.ToString()) as GameObject;
             var secondCard = GameObject.Find(SecondCard.ToString()) as GameObject;
             RpcSetDMG(firstCard, secondCard);
             RpcSetDMG(secondCard, firstCard);
+            ServerComp.RpcMoveCountIncrement();
         }
 
-        var Server = GameObject.Find("ServerObject");
-        var ServerComp = Server.GetComponent<ServerScript>();
-        ServerComp.RegisterMove(FirstCard, SecondCard);
+        
 
     }
     [Command]
@@ -77,15 +82,24 @@ public class PlayerConnectionScript : NetworkBehaviour
         SA.Settings.gameManager.GetPlayer(PlayerID).AssignParametersToCard(cardObj);
         SA.CardViz viz = cardObj.gameObject.GetComponentInParent<SA.CardViz>();
         RpcSetToHand(cardObj, viz.card_object_id , viz.card_json_id ,PlayerID);
-
-        Component[] allComponents = cardObj.GetComponents<MonoBehaviour>();
-        foreach (Component component in allComponents)
-        {
-            Debug.Log(component.GetType());
-        }
+        RpcPickCard(PlayerID);
+        RpcCheckCardLeft(PlayerID);
     }
 
-    
+    [ClientRpc]
+    public void RpcPickCard(int PlayerID)
+    {
+        SA.Settings.gameManager.GetPlayer(PlayerID).removeCardFromDeckCounter();
+    }
+
+
+    [ClientRpc]
+    public void RpcCheckCardLeft(int PlayerID)
+    {
+        if (!SA.Settings.gameManager.GetPlayer(PlayerID).CheckIfAnyCardLeft())
+            SA.Settings.gameManager.GetPlayer(PlayerID).hideDeck();
+    }
+
     [ClientRpc]
     public void RpcSetToHand(GameObject card, int CardID, int CardJsonID, int PlayerID)
     {

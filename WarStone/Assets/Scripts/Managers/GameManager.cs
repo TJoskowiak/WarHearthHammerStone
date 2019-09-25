@@ -14,6 +14,7 @@ namespace SA
         public State currentState;
         public GameObject CardPrefab;
         public Player currentPlayer;
+        public Player opponentPlayer;
         public SO.GameEvent onGameStart;
         public Player[] Players;
         public StateManager stateManager;
@@ -23,9 +24,13 @@ namespace SA
 
         private PlayerConnectionScript playerConObj;
 
-        public HeroIconScript player1IconScript;
-        public HeroIconScript player2IconScript;
+        public HeroIconScript MyIconScript;
+        public HeroIconScript OpponentIconScript;
 
+        public GameObject Player1Deck;
+        public GameObject Player2Deck;
+
+        public int MoveCounter = 0;
 
 
         public void SetPlayerConnectionScript(PlayerConnectionScript script)
@@ -37,26 +42,44 @@ namespace SA
         private void Start()
         {
             Player Player1 = Resources.Load<Player>(@"Data/Variables/Player1");
-            Player1.StartingCardID = 1;
-            Player1.setResourceHolder(myHolder);
+            Player1.StartingCardID = 1; 
+            Player1.setDeck(Player1Deck);
+
             Player Player2 = Resources.Load<Player>(@"Data/Variables/Player2");
             Player2.StartingCardID = 101;
-            Player2.setResourceHolder(myHolder);
+            Player2.setDeck(Player2Deck);
 
 
 
             Settings.gameManager = this;
             if (!isServer)
             {
+                //Set appropiate Player 1
+                Player1.setResourceHolder(opponentHolder);
+                Player1.setIconScript(OpponentIconScript);
+                //Set appropiate Player 2
+                Player2.setResourceHolder(myHolder);
+                Player2.setIconScript(MyIconScript);
+
                 SetState(Resources.Load<State>(@"Data/Game States/WaitingForPlayer2"));
                 //Settings.ChangeStateToOpponentControlState();
                 currentPlayer = Resources.Load<Player>(@"Data/Variables/Player2");
+                opponentPlayer = Resources.Load<Player>(@"Data/Variables/Player1");
             }
 
             else
             {
+                //Set appropiate Player 1
+                Player1.setResourceHolder(myHolder);
+                Player1.setIconScript(MyIconScript);
+                //Set appropiate Player 2
+                Player2.setResourceHolder(opponentHolder);
+                Player2.setIconScript(OpponentIconScript);
+
                 SetState(Resources.Load<State>(@"Data/Game States/WaitingForPlayer2"));
+
                 currentPlayer = Resources.Load<Player>(@"Data/Variables/Player1");
+                opponentPlayer = Resources.Load<Player>(@"Data/Variables/Player2");
             }
 
 
@@ -66,20 +89,27 @@ namespace SA
         {
             if (currentState == stateManager.OpponentControlState)
             {
+                if (MoveCounter == 0) opponentPlayer.hitPoints--;
+
                 SetState(stateManager.PlayerControlState);
                 opponentHolder.RestartResource();
             }
             else if (currentState == stateManager.PlayerControlState)
             {
+                if (MoveCounter == 0) currentPlayer.hitPoints--;
+     
                 SetState(stateManager.OpponentControlState);
                 myHolder.RestartResource();
             }
+            MoveCounter = 0;
             
         }
 
         private void Update()
         {
             currentState.Tick(Time.deltaTime);
+            GetPlayer(1).updateHPBar();
+            GetPlayer(2).updateHPBar();
         }
 
         public void SetState(State state)

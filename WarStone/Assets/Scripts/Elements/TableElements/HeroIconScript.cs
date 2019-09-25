@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -19,9 +20,10 @@ public class HeroIconScript : MonoBehaviour
         
     }
 
-    public void ChangePercentage(int value) {
+    public void ChangePercentage(int value)
+    {
         hitpointsText.GetComponent<TextMeshProUGUI>().text = value.ToString();
         healthBar.transform.localScale = new Vector3(value, healthBar.transform.localScale.y);
-
     }
+
 }
