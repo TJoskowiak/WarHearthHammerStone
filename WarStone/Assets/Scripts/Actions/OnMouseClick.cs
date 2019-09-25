@@ -24,28 +24,28 @@ namespace SA.GameStates
                 }
             } else if (Input.GetMouseButtonDown(1)) {
                
-                var Player = GameObject.Find("LocalPlayer");
-                var PlayerComp = Player.GetComponent<PlayerConnectionScript>();
-                PlayerComp.CmdRoundOver();
+                //var Player = GameObject.Find("LocalPlayer");
+                //var PlayerComp = Player.GetComponent<PlayerConnectionScript>();
+                //PlayerComp.CmdRoundOver();
 
-                if(PlayerComp.isServer)
-                {
-                    var opponentDeskComp = GameObject.Find("Player1CardsDown");
-                    var children = opponentDeskComp.GetComponentsInChildren<CardViz>();
-                    foreach (var cardInstance in children)
-                    {
-                        cardInstance.GetComponent<CardViz>().cardMoved = false;
-                    }
-                }
-                else
-                {
-                    var opponentDeskComp = GameObject.Find("Player2CardsDown");
-                    var children = opponentDeskComp.GetComponentsInChildren<CardViz>();
-                    foreach (var cardInstance in children)
-                    {
-                        cardInstance.GetComponent<CardViz>().cardMoved = false;
-                    }
-                }
+                //if(PlayerComp.isServer)
+                //{
+                //    var opponentDeskComp = GameObject.Find("Player1CardsDown");
+                //    var children = opponentDeskComp.GetComponentsInChildren<CardViz>();
+                //    foreach (var cardInstance in children)
+                //    {
+                //        cardInstance.GetComponent<CardViz>().cardMoved = false;
+                //    }
+                //}
+                //else
+                //{
+                //    var opponentDeskComp = GameObject.Find("Player2CardsDown");
+                //    var children = opponentDeskComp.GetComponentsInChildren<CardViz>();
+                //    foreach (var cardInstance in children)
+                //    {
+                //        cardInstance.GetComponent<CardViz>().cardMoved = false;
+                //    }
+                //}
                 
             }
         }
