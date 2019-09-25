@@ -21,7 +21,8 @@ public class OpponentHandScript : NetworkBehaviour
             //Debug.Log("OHS: I am not a server");
             gameObject.SetActive(true);
             MyHand.SetActive(false);
-            transform.localPosition = MyHand.transform.localPosition;
+            
+           // transform.position = MyHand.transform.position;
             Player1CardsDown.transform.localRotation = Quaternion.Euler(0, 0, 180);
             Player2CardsDown.transform.localRotation = Quaternion.Euler(0, 0, 180);
 

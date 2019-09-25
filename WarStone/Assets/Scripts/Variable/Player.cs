@@ -87,8 +87,7 @@ namespace SA
         {
             CardViz viz = cardObj.gameObject.GetComponentInParent<CardViz>();
             viz.card_json_id = PickCard();
-            
-            //Random.Range(0, 15);
+
             viz.card_object_id = StartingCardID++;
         }     
 
