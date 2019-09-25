@@ -23,23 +23,30 @@ namespace SA.GameStates
                     }
                 }
             } else if (Input.GetMouseButtonDown(1)) {
+               
                 var Player = GameObject.Find("LocalPlayer");
                 var PlayerComp = Player.GetComponent<PlayerConnectionScript>();
                 PlayerComp.CmdRoundOver();
-                PlayerComp.CmdSendMovement(PlayerComp.firstCard, PlayerComp.secondCard);
 
-                try {
-                    var firstViz = GameObject.Find(PlayerComp.firstCard.ToString()).GetComponent<SA.CardViz>();
-                    var secondViz = GameObject.Find(PlayerComp.secondCard.ToString()).GetComponent<SA.CardViz>();
-
-                    firstViz._highlight = false;
-                    secondViz._highlight = false;
-                } catch (Exception e) {
-                    Debug.Log(e);
+                if(PlayerComp.isServer)
+                {
+                    var opponentDeskComp = GameObject.Find("Player1CardsDown");
+                    var children = opponentDeskComp.GetComponentsInChildren<CardViz>();
+                    foreach (var cardInstance in children)
+                    {
+                        cardInstance.GetComponent<CardViz>().cardMoved = false;
+                    }
                 }
-                PlayerComp.firstCard = 0;
-                PlayerComp.secondCard = 0;
-
+                else
+                {
+                    var opponentDeskComp = GameObject.Find("Player2CardsDown");
+                    var children = opponentDeskComp.GetComponentsInChildren<CardViz>();
+                    foreach (var cardInstance in children)
+                    {
+                        cardInstance.GetComponent<CardViz>().cardMoved = false;
+                    }
+                }
+                
             }
         }
     }

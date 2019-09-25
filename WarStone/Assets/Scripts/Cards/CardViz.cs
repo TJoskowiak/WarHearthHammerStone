@@ -22,6 +22,8 @@ namespace SA
         [SyncVar]
         public int card_object_id = 0;
 
+        public bool cardMoved = false;
+
         public int currentCardID;
 
         public TextMeshProUGUI cardName;

@@ -114,6 +114,15 @@ public class PlayerConnectionScript : NetworkBehaviour
 
                 firstViz._highlight = false;
                 secondViz._highlight = false;
+
+                if(isServer)
+                {
+                    firstViz.cardMoved = true;
+                }
+                else
+                {
+                    secondViz.cardMoved = true;
+                }
             }
             catch (Exception e)
             {
