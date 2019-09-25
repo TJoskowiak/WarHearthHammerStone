@@ -8,6 +8,7 @@ namespace SA
     public class Player : ScriptableObject
     {
         public int PlayerID;
+        public SA.Races.Race Player_Race;
         public SO.TransformVariable HandTransform;
         public SO.TransformVariable deskTransform;
         public SO.TransformVariable GraveyardTransform;
@@ -15,15 +16,20 @@ namespace SA
         public GameElements.CardElementLogic deskCardLogic;
         public GameElements.CardElementLogic graveLogic;
         public GameStates.State StartingState;
+        
         public int StartingCardID;
-        public int MaxResource;
 
         public List<int> AvailableCards = new List<int>(15) { 1, 1, 1, 2, 3, 3, 4, 4, 4, 5, 6, 9, 9, 14, 15 };
         public List<int> ShuffledCards;
 
-        private int AviableResource;
         private static int HAND_SIZE = 5;
         private static int DESK_SIZE = 6;
+        private ResourceHolder resourceHolder;
+
+        public void setResourceHolder(ResourceHolder holder)
+        {
+            resourceHolder = holder;
+        }
 
         public bool isHandFreeSapce()
         {
@@ -37,18 +43,14 @@ namespace SA
 
         public void RestartResource()
         {
-            AviableResource = MaxResource;
+            if(resourceHolder)
+                resourceHolder.RestartResource();
         }
 
         public bool ReserveResource(GameObject cardObj)
         {
             CardViz cardViz = cardObj.GetComponent<CardViz>();
-            int resource  = cardViz.strengthStat;
-
-            if (AviableResource < resource)
-                return false;
-            AviableResource -= resource;
-            return true;
+            return resourceHolder.ReserveResource(cardViz.strengthStat);
         }
 
         public GameStates.State getStaringState()
@@ -59,17 +61,7 @@ namespace SA
 
         public void ShuffleCards()
         {
-            List<int> source = new List<int>(AvailableCards);
-            List<int> output = new List<int>();
-            System.Random generator = new System.Random();
-
-            while (source.Count > 0)
-            {
-                int position = generator.Next(source.Count);
-                output.Add(source[position]);
-                source.RemoveAt(position);
-            }
-            ShuffledCards = output;
+            ShuffledCards = Player_Race.ShuffleCards();
         }
         public bool CheckIfAnyCardLeft()
         {
@@ -87,8 +79,7 @@ namespace SA
         {
             CardViz viz = cardObj.gameObject.GetComponentInParent<CardViz>();
             viz.card_json_id = PickCard();
-            
-            //Random.Range(0, 15);
+
             viz.card_object_id = StartingCardID++;
         }     
 
