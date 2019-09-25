@@ -19,6 +19,7 @@ namespace SA
         public int StartingCardID;
 
         public List<int> ShuffledCards;
+        private int ShuffledCardsCounter;
 
         private static int HAND_SIZE = 5;
         private static int DESK_SIZE = 6;
@@ -93,11 +94,17 @@ namespace SA
         public void ShuffleCards()
         {
             ShuffledCards = Player_Race.ShuffleCards();
+            ShuffledCardsCounter = ShuffledCards.Count;
         }
         public bool CheckIfAnyCardLeft()
         {
-            return ShuffledCards.Count > 0;
+            return ShuffledCardsCounter > 0;
         } 
+
+        public void removeCardFromDeckCounter()
+        {
+            ShuffledCardsCounter--;
+        }
 
         private int PickCard()
         {

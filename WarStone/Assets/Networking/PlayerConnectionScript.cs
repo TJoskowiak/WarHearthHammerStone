@@ -77,14 +77,24 @@ public class PlayerConnectionScript : NetworkBehaviour
         SA.Settings.gameManager.GetPlayer(PlayerID).AssignParametersToCard(cardObj);
         SA.CardViz viz = cardObj.gameObject.GetComponentInParent<SA.CardViz>();
         RpcSetToHand(cardObj, viz.card_object_id , viz.card_json_id ,PlayerID);
-
-        if (!SA.Settings.gameManager.GetPlayer(PlayerID).CheckIfAnyCardLeft())
-            SA.Settings.gameManager.GetPlayer(PlayerID).hideDeck();
-
-        
+        RpcPickCard(PlayerID);
+        RpcCheckCardLeft(PlayerID);
     }
 
-    
+    [ClientRpc]
+    public void RpcPickCard(int PlayerID)
+    {
+        SA.Settings.gameManager.GetPlayer(PlayerID).removeCardFromDeckCounter();
+    }
+
+
+    [ClientRpc]
+    public void RpcCheckCardLeft(int PlayerID)
+    {
+        if (!SA.Settings.gameManager.GetPlayer(PlayerID).CheckIfAnyCardLeft())
+            SA.Settings.gameManager.GetPlayer(PlayerID).hideDeck();
+    }
+
     [ClientRpc]
     public void RpcSetToHand(GameObject card, int CardID, int CardJsonID, int PlayerID)
     {
