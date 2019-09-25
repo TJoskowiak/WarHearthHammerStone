@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/BattleField/BattleField.unity
-    guid: 5eceb671a8ec3d44f8f19e53ceb74d77
-  - enabled: 1
     path: Assets/MainMenu/MainMenuv4.unity
     guid: f46d540cf93d851468b46b2e472fafa7
+  - enabled: 1
+    path: Assets/BattleField/BattleField.unity
+    guid: 5eceb671a8ec3d44f8f19e53ceb74d77
   - enabled: 1
     path: Assets/MainMenu/NetworkManagerScene.unity
     guid: 608b1b04432c47f4bbd32b20f30c3e86
