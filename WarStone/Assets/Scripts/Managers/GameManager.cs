@@ -105,9 +105,17 @@ namespace SA
             
         }
 
-        public void SetEndScreen(Player Loser)
+        public void EndGame(Player Loser)
         {
             playerConObj.CmdEndGame(Loser.PlayerID);
+        }
+
+        public void setEndScreen(int LoserPlayerID)
+        {
+            if (LoserPlayerID == currentPlayer.PlayerID)
+                Debug.Log("Przegrana");
+            else
+                Debug.Log("Wygrana"); 
         }
 
 

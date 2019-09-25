@@ -149,7 +149,7 @@ namespace SA
             hitPoints--;
             if(hitPoints == 0)
             {
-                Settings.gameManager.SetEndScreen(this);               
+                Settings.gameManager.EndGame(this);               
             }
         }
 

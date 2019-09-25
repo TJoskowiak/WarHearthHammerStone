@@ -75,7 +75,7 @@ public class PlayerConnectionScript : NetworkBehaviour
     [ClientRpc]
     public void RpcEndGame(int LoserPlayerID)
     {
-
+        SA.Settings.gameManager.setEndScreen(LoserPlayerID);
     }
 
     [Command]
@@ -84,6 +84,7 @@ public class PlayerConnectionScript : NetworkBehaviour
         var Server = GameObject.Find("ServerObject");
         var ServerComp = Server.GetComponent<ServerScript>();
         ServerComp.RpcCardDeployed(card, PlayerID);
+        ServerComp.RpcMoveCountIncrement();
     }
 
     [Command]
