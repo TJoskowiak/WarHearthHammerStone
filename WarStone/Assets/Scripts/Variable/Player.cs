@@ -16,10 +16,12 @@ namespace SA
         public GameElements.CardElementLogic graveLogic;
         public GameStates.State StartingState;
         public int StartingCardID;
+        public int MaxResource;
+
         public List<int> AvailableCards = new List<int>(15) { 1, 1, 1, 2, 3, 3, 4, 4, 4, 5, 6, 9, 9, 14, 15 };
         public List<int> ShuffledCards;
-        
 
+        private int AviableResource;
         private static int HAND_SIZE = 5;
         private static int DESK_SIZE = 6;
 
@@ -31,6 +33,22 @@ namespace SA
         public bool isDeskFreeSpace()
         {
             return deskTransform.value.childCount < DESK_SIZE;
+        }
+
+        public void RestartResource()
+        {
+            AviableResource = MaxResource;
+        }
+
+        public bool ReserveResource(GameObject cardObj)
+        {
+            CardViz cardViz = cardObj.GetComponent<CardViz>();
+            int resource  = cardViz.strengthStat;
+
+            if (AviableResource < resource)
+                return false;
+            AviableResource -= resource;
+            return true;
         }
 
         public GameStates.State getStaringState()

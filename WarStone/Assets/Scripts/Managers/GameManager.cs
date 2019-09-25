@@ -16,6 +16,7 @@ namespace SA
         public Player currentPlayer;
         public SO.GameEvent onGameStart;
         public Player[] Players;
+        public StateManager stateManager;
 
 
         private PlayerConnectionScript playerConObj;
@@ -48,6 +49,19 @@ namespace SA
 
         }
 
+        public void EndTurn()
+        {
+            if (currentState == stateManager.OpponentControlState)
+            {
+                SetState(stateManager.PlayerControlState);                
+            }
+            else if (currentState == stateManager.PlayerControlState)
+            {
+                SetState(stateManager.OpponentControlState);
+            }
+            currentPlayer.RestartResource();
+        }
+
         private void Update()
         {
             currentState.Tick(Time.deltaTime);
@@ -66,7 +80,9 @@ namespace SA
         {
             SetState(currentPlayer.getStaringState());
             GetPlayer(1).ShuffleCards();
+            GetPlayer(1).RestartResource();
             GetPlayer(2).ShuffleCards();
+            GetPlayer(2).RestartResource();
             onGameStart.Raise();
         }
 
@@ -87,8 +103,8 @@ namespace SA
         public void AddCardToDesk(GameObject cardObj)
         {
             if (!playerConObj) Debug.LogError("PlayerConnectionObject is not assign in Game Manager");
-            if (currentPlayer.isDeskFreeSpace())
-            {
+            if (currentPlayer.isDeskFreeSpace() && currentPlayer.ReserveResource(cardObj))
+            {                
                 playerConObj.CmdCardDeployed(cardObj, currentPlayer.PlayerID);
             }
         }

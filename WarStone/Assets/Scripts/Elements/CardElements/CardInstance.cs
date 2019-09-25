@@ -48,7 +48,10 @@ namespace SA
         {
             cardViz.healthStat -= opponent.cardViz.strengthStat;
             if (cardViz.healthStat <= 0)
+            {
+                cardViz.healthStat = 0;
                 owner.KillUnit(this.gameObject);
+            }
 
         }
     }
