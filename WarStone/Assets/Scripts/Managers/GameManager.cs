@@ -18,8 +18,8 @@ namespace SA
         public Player[] Players;
         public StateManager stateManager;
 
-        public ResourceHolder holder;
-
+        public ResourceHolder myHolder;
+        public ResourceHolder opponentHolder;
 
         private PlayerConnectionScript playerConObj;
 
@@ -33,10 +33,10 @@ namespace SA
         {
             Player Player1 = Resources.Load<Player>(@"Data/Variables/Player1");
             Player1.StartingCardID = 1;
-            Player1.setResourceHolder(holder);
+            Player1.setResourceHolder(myHolder);
             Player Player2 = Resources.Load<Player>(@"Data/Variables/Player2");
             Player2.StartingCardID = 101;
-            Player2.setResourceHolder(holder);
+            Player2.setResourceHolder(myHolder);
 
 
 
@@ -44,7 +44,6 @@ namespace SA
             if (!isServer)
             {
                 SetState(Resources.Load<State>(@"Data/Game States/WaitingForPlayer2"));
-                
                 //Settings.ChangeStateToOpponentControlState();
                 currentPlayer = Resources.Load<Player>(@"Data/Variables/Player2");
             }
@@ -62,13 +61,15 @@ namespace SA
         {
             if (currentState == stateManager.OpponentControlState)
             {
-                SetState(stateManager.PlayerControlState);                
+                SetState(stateManager.PlayerControlState);
+                opponentHolder.RestartResource();
             }
             else if (currentState == stateManager.PlayerControlState)
             {
                 SetState(stateManager.OpponentControlState);
+                myHolder.RestartResource();
             }
-            currentPlayer.RestartResource();
+            
         }
 
         private void Update()
@@ -98,6 +99,11 @@ namespace SA
         public Player GetPlayer(int ID)
         {
             return Players[ID - 1];
+        }
+
+        public int GetCurrentPlayerID()
+        {
+            return currentPlayer.PlayerID;
         }
 
         public void CreateHandCard()

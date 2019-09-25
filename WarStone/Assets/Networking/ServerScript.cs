@@ -38,5 +38,11 @@ public class ServerScript : NetworkBehaviour
         if (card == null) return;
         SA.Player player = SA.Settings.gameManager.GetPlayer(PlayerID);
         player.SetPositionToDesk(card);
+
+        if(SA.Settings.gameManager.currentPlayer.PlayerID != player.PlayerID)
+        {
+            SA.Settings.gameManager.opponentHolder.ReserveResource(card.GetComponent<SA.CardViz>().strengthStat);
+        }
+
     }
 }
