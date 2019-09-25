@@ -65,6 +65,8 @@ namespace SA
         public void StartGame()
         {
             SetState(currentPlayer.getStaringState());
+            GetPlayer(1).ShuffleCards();
+            GetPlayer(2).ShuffleCards();
             onGameStart.Raise();
         }
 

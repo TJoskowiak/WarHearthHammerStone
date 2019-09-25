@@ -16,8 +16,8 @@ namespace SA
         public GameElements.CardElementLogic graveLogic;
         public GameStates.State StartingState;
         public int StartingCardID;
-        public ArrayList AvailableCards = new ArrayList(15) { 1, 1, 1, 2, 3, 3, 4, 4, 4, 5, 6, 9, 9, 14, 15 };
-        public ArrayList ShuffledCards;
+        public List<int> AvailableCards = new List<int>(15) { 1, 1, 1, 2, 3, 3, 4, 4, 4, 5, 6, 9, 9, 14, 15 };
+        public List<int> ShuffledCards;
         
 
         private static int HAND_SIZE = 5;
@@ -39,10 +39,10 @@ namespace SA
         }
 
 
-        private void ShuffleCards()
+        public void ShuffleCards()
         {
-            ArrayList source = new ArrayList(AvailableCards);
-            ArrayList output = new ArrayList();
+            List<int> source = new List<int>(AvailableCards);
+            List<int> output = new List<int>();
             System.Random generator = new System.Random();
 
             while (source.Count > 0)
@@ -53,11 +53,24 @@ namespace SA
             }
             ShuffledCards = output;
         }
+        public bool CheckIfAnyCardLeft()
+        {
+            return ShuffledCards.Count > 0;
+        } 
+
+        private int PickCard()
+        {
+            int cardJsonID = ShuffledCards[0];
+            ShuffledCards.RemoveAt(0);
+            return cardJsonID;
+        }
 
         public void AssignParametersToCard(GameObject cardObj)
         {
             CardViz viz = cardObj.gameObject.GetComponentInParent<CardViz>();
-            viz.card_json_id = Random.Range(0, 15);
+            viz.card_json_id = PickCard();
+            
+            //Random.Range(0, 15);
             viz.card_object_id = StartingCardID++;
         }     
 
