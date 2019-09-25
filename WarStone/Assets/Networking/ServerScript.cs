@@ -34,45 +34,10 @@ public class ServerScript : NetworkBehaviour
     }
 
     [ClientRpc]
-    public void RpcPlayer1CardDeployed(GameObject card)
+    public void RpcCardDeployed(GameObject card, int PlayerID)
     {
         if (card == null) return;
-
-        //typ kartu
-        //if(card.instance.cardViz.cardType == MinionCard)
-        {
-            var grid = GameObject.Find("Player1CardsDown");
-            card.transform.SetParent(grid.transform);
-            card.transform.localPosition = Vector3.zero;
-            card.transform.localScale = Vector3.one;
-            card.transform.localRotation = Quaternion.Euler(0, 0, 0);
-            if (!isServer){
-                SA.CardInstance cardInstance = card.AddComponent<SA.CardInstance>();
-            }
-            card.GetComponentInParent<SA.CardInstance>().currentLogic = Resources.Load<SA.GameElements.CardElementLogic>(@"Data/Game Elements/My Desk Card");
-            if (card.GetComponentInParent<SA.CardInstance>() == null)
-                Debug.Log("CardInstanceNull");
-        }
+        SA.Player player = SA.Settings.gameManager.GetPlayer(PlayerID);
+        player.SetPositionToDesk(card);
     }
-
-    [ClientRpc]
-    public void RpcPlayer2CardDeployed(GameObject card) {
-        if (card == null) return;
-
-        {
-            var grid = GameObject.Find("Player2CardsDown");
-            card.transform.SetParent(grid.transform);
-            card.transform.localPosition = Vector3.zero;
-            card.transform.localScale = Vector3.one;
-            card.transform.localRotation = Quaternion.Euler(0, 0, 0);
-
-            if (!isServer){
-                SA.CardInstance cardInstance = card.AddComponent<SA.CardInstance>();
-            }
-            card.GetComponentInParent<SA.CardInstance>().currentLogic = Resources.Load<SA.GameElements.CardElementLogic>(@"Data/Game Elements/Opponent Desk Card");
-            if (card.GetComponentInParent<SA.CardInstance>() == null)
-                Debug.Log("CardInstanceNull");
-        }
-    }
-
 }

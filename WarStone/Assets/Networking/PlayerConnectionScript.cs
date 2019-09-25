@@ -47,17 +47,11 @@ public class PlayerConnectionScript : NetworkBehaviour
     }
 
     [Command]
-    public void CmdPlayer1CardDeployed(GameObject card) {
+    public void CmdCardDeployed(GameObject card, int PlayerID)
+    {
         var Server = GameObject.Find("ServerObject");
         var ServerComp = Server.GetComponent<ServerScript>();
-        ServerComp.RpcPlayer1CardDeployed(card);
-    }
-
-    [Command]
-    public void CmdPlayer2CardDeployed(GameObject card) {
-        var Server = GameObject.Find("ServerObject");
-        var ServerComp = Server.GetComponent<ServerScript>();
-        ServerComp.RpcPlayer2CardDeployed(card);
+        ServerComp.RpcCardDeployed(card, PlayerID);
     }
 
     [Command]
@@ -68,6 +62,12 @@ public class PlayerConnectionScript : NetworkBehaviour
         SA.Settings.gameManager.GetPlayer(PlayerID).AssignParametersToCard(cardObj);
         SA.CardViz viz = cardObj.gameObject.GetComponentInParent<SA.CardViz>();
         RpcSetToHand(cardObj, viz.card_object_id , viz.card_json_id ,PlayerID);
+
+        Component[] allComponents = cardObj.GetComponents<MonoBehaviour>();
+        foreach (Component component in allComponents)
+        {
+            Debug.Log(component.GetType());
+        }
     }
 
     

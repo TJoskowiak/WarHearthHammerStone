@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerID: 2
   HandTransform: {fileID: 11400000, guid: 6234470217f6667429ac7007465ecb6c, type: 2}
+  deskTransform: {fileID: 11400000, guid: 9d0c629f2226f0849b5256a65e60e0e8, type: 2}
   GraveyardTransform: {fileID: 11400000, guid: 466e1e71981dc6f48990634d43d23f97, type: 2}
   HandLogic: {fileID: 11400000, guid: 7e06b9a27d5dbe84998920255ec4f618, type: 2}
   deskCardLogic: {fileID: 11400000, guid: 8d4ca5c8e2eb7814c849d766b0272931, type: 2}
-  StartingCardID: 100
+  StartingCardID: 101

@@ -51,6 +51,7 @@ namespace SA
             child.transform.SetParent(parent.value.transform);
             child.transform.localPosition = Vector3.zero;
             child.transform.localScale = Vector3.one;
+            child.transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
     }
 

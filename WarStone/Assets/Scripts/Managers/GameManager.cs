@@ -53,10 +53,14 @@ namespace SA
         }
 
         public void CreateHandCard()
-        {            
+        {
+            if (currentPlayer.HandFreeSapce())
+            {
+                var playerConObj = GameObject.Find("LocalPlayer").GetComponent<PlayerConnectionScript>();
+                playerConObj.CmdSpawnCard(currentPlayer.PlayerID);
+            }
             //Spawn object
-            var playerConObj = GameObject.Find("LocalPlayer").GetComponent<PlayerConnectionScript>();
-            playerConObj.CmdSpawnCard(currentPlayer.PlayerID);
+
         }
 
 

@@ -39,13 +39,30 @@ namespace SA
         [SyncVar]
         public bool _highlight = false;
 
+        private bool CardCreated = false;
+
         public int healthStat { get => _healthStat; set => _healthStat = value; }
         public int specialStat { get => _specialStat; set => _specialStat = value; }
         public int strengthStat { get => _strengthStat; set => _strengthStat = value; }
 
         private void Start() {
-            DeserializeCard(card_json_id);
-            this.name = card_object_id.ToString();
+            if (!CardCreated)
+            {
+                DeserializeCard(card_json_id);
+                this.name = card_object_id.ToString();
+                CardCreated = true;
+            }            
+        }
+
+        public void CreateCard()
+        {
+            if (!CardCreated)
+            {
+                DeserializeCard(card_json_id);
+                this.name = card_object_id.ToString();
+                CardCreated = true;
+            }
+            
         }
 
         private void Update() {

@@ -22,18 +22,21 @@ namespace SA
 
         public void onClick()
         {
-            currentLogic.onClick(this);
+            if(currentLogic)
+                currentLogic.onClick(this);
 
         }
 
         public void onHighlight()
         {
-            currentLogic.onHighlight(this);
+            if (currentLogic)
+                currentLogic.onHighlight(this);
         }
 
         public void onDrag()
         {
-            currentLogic.onDrag(this);
+            if (currentLogic)
+                currentLogic.onDrag(this);
         }
 
         public void setOwner(Player owner)
