@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -24,4 +25,5 @@ public class HeroIconScript : MonoBehaviour
         healthBar.transform.localScale = new Vector3(value, healthBar.transform.localScale.y);
 
     }
+
 }

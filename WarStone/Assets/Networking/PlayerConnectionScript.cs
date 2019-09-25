@@ -78,11 +78,10 @@ public class PlayerConnectionScript : NetworkBehaviour
         SA.CardViz viz = cardObj.gameObject.GetComponentInParent<SA.CardViz>();
         RpcSetToHand(cardObj, viz.card_object_id , viz.card_json_id ,PlayerID);
 
-        Component[] allComponents = cardObj.GetComponents<MonoBehaviour>();
-        foreach (Component component in allComponents)
-        {
-            Debug.Log(component.GetType());
-        }
+        if (!SA.Settings.gameManager.GetPlayer(PlayerID).CheckIfAnyCardLeft())
+            SA.Settings.gameManager.GetPlayer(PlayerID).hideDeck();
+
+        
     }
 
     

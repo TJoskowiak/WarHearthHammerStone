@@ -23,9 +23,33 @@ namespace SA
         private static int HAND_SIZE = 5;
         private static int DESK_SIZE = 6;
         private ResourceHolder resourceHolder;
+        private HeroIconScript IconScript;
+        private GameObject deck;
 
         public int hitPoints;
         public int maxHitPoints;
+
+        public void setDeck(GameObject deck)
+        {
+            this.deck = deck;
+        }
+
+        public void hideDeck()
+        {
+            deck.SetActive(false);
+        }
+
+        public void setIconScript(HeroIconScript icon)
+        {
+            IconScript = icon;
+        }
+
+        public void updateHPBar()
+        {
+            if(maxHitPoints != 0)
+                IconScript.ChangePercentage((hitPoints * 100 )/ maxHitPoints );
+
+        }
 
         public void setStartedHitPoints()
         {

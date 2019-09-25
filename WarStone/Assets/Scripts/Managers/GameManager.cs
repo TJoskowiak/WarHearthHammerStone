@@ -26,6 +26,9 @@ namespace SA
         public HeroIconScript player1IconScript;
         public HeroIconScript player2IconScript;
 
+        public GameObject Player1Deck;
+        public GameObject Player2Deck;
+
 
 
         public void SetPlayerConnectionScript(PlayerConnectionScript script)
@@ -39,9 +42,13 @@ namespace SA
             Player Player1 = Resources.Load<Player>(@"Data/Variables/Player1");
             Player1.StartingCardID = 1;
             Player1.setResourceHolder(myHolder);
+            Player1.setIconScript(player1IconScript);
+            Player1.setDeck(Player1Deck);
             Player Player2 = Resources.Load<Player>(@"Data/Variables/Player2");
             Player2.StartingCardID = 101;
             Player2.setResourceHolder(myHolder);
+            Player2.setIconScript(player1IconScript);
+            Player2.setDeck(Player2Deck);
 
 
 
@@ -80,6 +87,8 @@ namespace SA
         private void Update()
         {
             currentState.Tick(Time.deltaTime);
+            GetPlayer(1).updateHPBar();
+            GetPlayer(2).updateHPBar();
         }
 
         public void SetState(State state)

@@ -549,6 +549,8 @@ MonoBehaviour:
   opponentHolder: {fileID: 1573090460}
   player1IconScript: {fileID: 1470271084}
   player2IconScript: {fileID: 1766430344}
+  Player1Deck: {fileID: 1188217530}
+  Player2Deck: {fileID: 284739420}
 --- !u!4 &105242407
 Transform:
   m_ObjectHideFlags: 0
