@@ -29,7 +29,7 @@ public class ServerScript : NetworkBehaviour
 
     [ClientRpc]
     public void RpcSwitchRounds() {
-        SA.Settings.SwapState();
+        SA.Settings.gameManager.EndTurn();//  SwapState();
     }
 
     [ClientRpc]
