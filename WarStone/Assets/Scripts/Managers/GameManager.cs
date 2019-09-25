@@ -23,8 +23,8 @@ namespace SA
 
         private PlayerConnectionScript playerConObj;
 
-        public HeroIconScript player1IconScript;
-        public HeroIconScript player2IconScript;
+        public HeroIconScript MyIconScript;
+        public HeroIconScript OpponentIconScript;
 
         public GameObject Player1Deck;
         public GameObject Player2Deck;
@@ -40,14 +40,11 @@ namespace SA
         private void Start()
         {
             Player Player1 = Resources.Load<Player>(@"Data/Variables/Player1");
-            Player1.StartingCardID = 1;
-            Player1.setResourceHolder(myHolder);
-            Player1.setIconScript(player1IconScript);
+            Player1.StartingCardID = 1; 
             Player1.setDeck(Player1Deck);
+
             Player Player2 = Resources.Load<Player>(@"Data/Variables/Player2");
             Player2.StartingCardID = 101;
-            Player2.setResourceHolder(myHolder);
-            Player2.setIconScript(player1IconScript);
             Player2.setDeck(Player2Deck);
 
 
@@ -55,6 +52,13 @@ namespace SA
             Settings.gameManager = this;
             if (!isServer)
             {
+                //Set appropiate Player 1
+                Player1.setResourceHolder(opponentHolder);
+                Player1.setIconScript(OpponentIconScript);
+                //Set appropiate Player 2
+                Player2.setResourceHolder(myHolder);
+                Player2.setIconScript(MyIconScript);
+
                 SetState(Resources.Load<State>(@"Data/Game States/WaitingForPlayer2"));
                 //Settings.ChangeStateToOpponentControlState();
                 currentPlayer = Resources.Load<Player>(@"Data/Variables/Player2");
@@ -62,6 +66,13 @@ namespace SA
 
             else
             {
+                //Set appropiate Player 1
+                Player1.setResourceHolder(myHolder);
+                Player1.setIconScript(MyIconScript);
+                //Set appropiate Player 2
+                Player2.setResourceHolder(opponentHolder);
+                Player2.setIconScript(OpponentIconScript);
+
                 SetState(Resources.Load<State>(@"Data/Game States/WaitingForPlayer2"));
                 currentPlayer = Resources.Load<Player>(@"Data/Variables/Player1");
             }
