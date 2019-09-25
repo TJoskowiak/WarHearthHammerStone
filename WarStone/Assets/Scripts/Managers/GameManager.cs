@@ -22,7 +22,11 @@ namespace SA
         public ResourceHolder opponentHolder;
 
         private PlayerConnectionScript playerConObj;
-        
+
+        public HeroIconScript player1IconScript;
+        public HeroIconScript player2IconScript;
+
+
 
         public void SetPlayerConnectionScript(PlayerConnectionScript script)
         {
