@@ -242,13 +242,14 @@ GameObject:
   - component: {fileID: 70178686}
   - component: {fileID: 70178685}
   - component: {fileID: 70178684}
+  - component: {fileID: 70178687}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &70178683
 RectTransform:
   m_ObjectHideFlags: 0
@@ -339,6 +340,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 70178682}
   m_CullTransparentMesh: 0
+--- !u!114 &70178687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70178682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01a055b694402bd469a86915f1319e61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 0}
+  response:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &105242405
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,6 +392,7 @@ MonoBehaviour:
   CardPrefab: {fileID: 459087192063210939, guid: a9a511cd857fa8543821f4a79fba6c76,
     type: 3}
   currentPlayer: {fileID: 0}
+  onGameStart: {fileID: 11400000, guid: f7d971691f2513f41926e14dd04ca4eb, type: 2}
   Players:
   - {fileID: 11400000, guid: 457a7e4a374e921448e03a206e805aef, type: 2}
   - {fileID: 11400000, guid: ffa6be0902d424b418f34061fd07694c, type: 2}

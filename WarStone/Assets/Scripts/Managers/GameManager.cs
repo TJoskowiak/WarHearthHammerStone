@@ -14,7 +14,9 @@ namespace SA
         public State currentState;
         public GameObject CardPrefab;
         public Player currentPlayer;
+        public SO.GameEvent onGameStart;
         public Player[] Players;
+
 
         private PlayerConnectionScript playerConObj;
 
@@ -31,13 +33,15 @@ namespace SA
             Settings.gameManager = this;
             if (!isServer)
             {
-                Settings.ChangeStateToOpponentControlState();
+                SetState(Resources.Load<State>(@"Data/Game States/WaitingForPlayer2"));
+                
+                //Settings.ChangeStateToOpponentControlState();
                 currentPlayer = Resources.Load<Player>(@"Data/Variables/Player2");
             }
 
             else
             {
-                Settings.ChangeStateToPlayerControlState();
+                SetState(Resources.Load<State>(@"Data/Game States/WaitingForPlayer2"));
                 currentPlayer = Resources.Load<Player>(@"Data/Variables/Player1");
             }
 
@@ -61,6 +65,7 @@ namespace SA
         public void StartGame()
         {
             SetState(currentPlayer.getStaringState());
+            onGameStart.Raise();
         }
 
         public Player GetPlayer(int ID)

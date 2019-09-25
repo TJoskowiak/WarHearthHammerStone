@@ -19,7 +19,7 @@ public class PlayerConnectionScript : NetworkBehaviour
         else
         {
             this.name = "RemotePlayer";
-            //SA.Settings.gameManager.StartGame();
+            SA.Settings.gameManager.StartGame();
         }
 
 
