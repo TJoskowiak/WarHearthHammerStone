@@ -1,17 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
-public class MainMenuScript : MonoBehaviour
+public class MainMenuScript : NetworkBehaviour
 {
     public GameObject ExitDialogBoxWindow;
     public GameObject SettingsDialogBoxWindow;
 
+    public void Start() {
+        var netHandler = GameObject.Find("NetworkHandler");
+        if (netHandler) {
+            Destroy(netHandler);
+        }
+    }
     public void startGame()
     {
 
     }
 
+    public void newGamePressed() {
+        SceneManager.LoadScene("NetworkManagerScene");
+    }
     public void exitDialogBoxSetActive()
     {
         ExitDialogBoxWindow.SetActive(true);

@@ -86,6 +86,9 @@ namespace SA
             }
         }
 
-
+        public void Disconnect() {
+            NetworkManager.singleton.StopClient();
+            NetworkManager.singleton.StopHost();
+        }
     }
 }
