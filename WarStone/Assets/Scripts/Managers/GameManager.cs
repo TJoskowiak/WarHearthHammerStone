@@ -85,10 +85,15 @@ namespace SA
         public void SetState(State state)
         {
             currentState = state;
-            var TurnTextbox = GameObject.Find("MyTurnTextbox");
-            var TurnTextboxComp = TurnTextbox.GetComponent<Text>();
-            if (currentState.StateName != "")
-                TurnTextboxComp.text = currentState.StateName;
+
+            var TurnButton = GameObject.Find("TurnButton");
+            var TurnButtonComp = TurnButton.GetComponent<TurnButtonScript>();
+            TurnButtonComp.SetState(state);
+
+            //var TurnTextbox = GameObject.Find("MyTurnTextbox");
+            //var TurnTextboxComp = TurnTextbox.GetComponent<Text>();
+            //if (currentState.StateName != "")
+            //    TurnTextboxComp.text = currentState.StateName;
         }
 
         public void StartGame()
