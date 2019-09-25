@@ -195,18 +195,29 @@ MonoBehaviour:
   m_CaptionImage: {fileID: 0}
   m_ItemText: {fileID: 2003256642}
   m_ItemImage: {fileID: 0}
-  m_Value: 0
+  m_Value: 4
   m_Options:
     m_Options:
     - m_Text: 1920X1080
       m_Image: {fileID: 0}
-    - m_Text: Option B
+    - m_Text: 1600x900
       m_Image: {fileID: 0}
-    - m_Text: Option C
+    - m_Text: 1280x720
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1567619973}
+        m_MethodName: changeResolution
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 82423260}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Dropdown, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Dropdown+DropdownEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &82423261
@@ -976,7 +987,7 @@ RectTransform:
   m_GameObject: {fileID: 415717123}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.7480917, y: 2.7480917, z: 2.7480917}
+  m_LocalScale: {x: 1.2502444, y: 1.2502444, z: 1.2502444}
   m_Children:
   - {fileID: 279800846}
   - {fileID: 1591444471}
@@ -1450,7 +1461,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 299324470}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.2
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2724,7 +2735,7 @@ RectTransform:
   m_GameObject: {fileID: 906204566}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.748092, y: 2.748092, z: 2.748092}
+  m_LocalScale: {x: 1.2837162, y: 1.2837162, z: 1.2837162}
   m_Children:
   - {fileID: 1846770914}
   - {fileID: 856445470}
@@ -2733,7 +2744,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -46.973}
   m_SizeDelta: {x: 849, y: 241}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &906204568
@@ -2830,8 +2841,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -48, y: 26}
-  m_SizeDelta: {x: 520, y: 160}
+  m_AnchoredPosition: {x: -45.9, y: 23.8}
+  m_SizeDelta: {x: 518.7199, y: 10.324974}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &935223791
 MonoBehaviour:
@@ -2899,7 +2910,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 0
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -2919,7 +2930,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 5.099782}
   m_textInfo:
     textComponent: {fileID: 935223791}
     characterCount: 10
@@ -3881,8 +3892,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -55, y: 26}
-  m_SizeDelta: {x: 520, y: 160}
+  m_AnchoredPosition: {x: -54.2, y: 22.8}
+  m_SizeDelta: {x: 46.17988, y: -5.649971}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1251226966
 MonoBehaviour:
@@ -3952,7 +3963,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 0
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -4865,15 +4876,32 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
+    - m_Text: Very Low
+      m_Image: {fileID: 0}
     - m_Text: Low
       m_Image: {fileID: 0}
     - m_Text: Medium
       m_Image: {fileID: 0}
     - m_Text: High
       m_Image: {fileID: 0}
+    - m_Text: Very High
+      m_Image: {fileID: 0}
+    - m_Text: Ultra
+      m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1567619973}
+        m_MethodName: changeGraphicsSettings
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1575869450}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Dropdown, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Dropdown+DropdownEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1575869451
@@ -5966,10 +5994,21 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1567619973}
+        m_MethodName: toggleFullscreen
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1854464510}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1 &1865883610
 GameObject:
   m_ObjectHideFlags: 0
@@ -6040,7 +6079,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 1920X1080
+  m_Text: 1280x720
 --- !u!222 &1865883613
 CanvasRenderer:
   m_ObjectHideFlags: 0
