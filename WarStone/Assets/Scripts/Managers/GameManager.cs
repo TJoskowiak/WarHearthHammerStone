@@ -14,6 +14,7 @@ namespace SA
         public State currentState;
         public GameObject CardPrefab;
         public Player currentPlayer;
+        public Player opponentPlayer;
         public SO.GameEvent onGameStart;
         public Player[] Players;
         public StateManager stateManager;
@@ -29,6 +30,7 @@ namespace SA
         public GameObject Player1Deck;
         public GameObject Player2Deck;
 
+        public int MoveCounter = 0;
 
 
         public void SetPlayerConnectionScript(PlayerConnectionScript script)
@@ -62,6 +64,7 @@ namespace SA
                 SetState(Resources.Load<State>(@"Data/Game States/WaitingForPlayer2"));
                 //Settings.ChangeStateToOpponentControlState();
                 currentPlayer = Resources.Load<Player>(@"Data/Variables/Player2");
+                opponentPlayer = Resources.Load<Player>(@"Data/Variables/Player1");
             }
 
             else
@@ -74,7 +77,9 @@ namespace SA
                 Player2.setIconScript(OpponentIconScript);
 
                 SetState(Resources.Load<State>(@"Data/Game States/WaitingForPlayer2"));
+
                 currentPlayer = Resources.Load<Player>(@"Data/Variables/Player1");
+                opponentPlayer = Resources.Load<Player>(@"Data/Variables/Player2");
             }
 
 
@@ -84,14 +89,19 @@ namespace SA
         {
             if (currentState == stateManager.OpponentControlState)
             {
+                if (MoveCounter == 0) opponentPlayer.hitPoints--;
+
                 SetState(stateManager.PlayerControlState);
                 opponentHolder.RestartResource();
             }
             else if (currentState == stateManager.PlayerControlState)
             {
+                if (MoveCounter == 0) currentPlayer.hitPoints--;
+     
                 SetState(stateManager.OpponentControlState);
                 myHolder.RestartResource();
             }
+            MoveCounter = 0;
             
         }
 

@@ -19,12 +19,7 @@ public class ServerScript : NetworkBehaviour
         if (!isServer) {
             return;
         }
-
-        //server should calculate the damage and update syncvars here
-
-
         Debug.Log("Server: Registered the move " + FirstCard.ToString() + " " + SecondCard.ToString() + " , new turn");
-        
     }
 
     [ClientRpc]
@@ -45,4 +40,11 @@ public class ServerScript : NetworkBehaviour
         }
 
     }
+
+    [ClientRpc]
+    public void RpcMoveCountIncrement()
+    {
+        SA.Settings.gameManager.MoveCounter++;
+    }
+
 }

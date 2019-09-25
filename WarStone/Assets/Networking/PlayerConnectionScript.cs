@@ -28,19 +28,24 @@ public class PlayerConnectionScript : NetworkBehaviour
 
 
     [Command]
-    public void CmdSendMovement(int FirstCard, int SecondCard) {
-        if (FirstCard != 0 && SecondCard != 0) {
+    public void CmdSendMovement(int FirstCard, int SecondCard)
+    {
+        var Server = GameObject.Find("ServerObject");
+        var ServerComp = Server.GetComponent<ServerScript>();
+        ServerComp.RegisterMove(FirstCard, SecondCard);
+
+        if (FirstCard != 0 && SecondCard != 0)
+        {
 
 
             var firstCard = GameObject.Find(FirstCard.ToString()) as GameObject;
             var secondCard = GameObject.Find(SecondCard.ToString()) as GameObject;
             RpcSetDMG(firstCard, secondCard);
             RpcSetDMG(secondCard, firstCard);
+            ServerComp.RpcMoveCountIncrement();
         }
 
-        var Server = GameObject.Find("ServerObject");
-        var ServerComp = Server.GetComponent<ServerScript>();
-        ServerComp.RegisterMove(FirstCard, SecondCard);
+        
 
     }
     [Command]
