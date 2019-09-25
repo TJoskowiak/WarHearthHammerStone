@@ -8,6 +8,7 @@ namespace SA
     public class Player : ScriptableObject
     {
         public int PlayerID;
+        public SA.Races.Race Player_Race;
         public SO.TransformVariable HandTransform;
         public SO.TransformVariable deskTransform;
         public SO.TransformVariable GraveyardTransform;
@@ -60,17 +61,7 @@ namespace SA
 
         public void ShuffleCards()
         {
-            List<int> source = new List<int>(AvailableCards);
-            List<int> output = new List<int>();
-            System.Random generator = new System.Random();
-
-            while (source.Count > 0)
-            {
-                int position = generator.Next(source.Count);
-                output.Add(source[position]);
-                source.RemoveAt(position);
-            }
-            ShuffledCards = output;
+            ShuffledCards = Player_Race.ShuffleCards();
         }
         public bool CheckIfAnyCardLeft()
         {
