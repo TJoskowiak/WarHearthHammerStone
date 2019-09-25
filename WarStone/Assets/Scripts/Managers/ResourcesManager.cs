@@ -3,9 +3,8 @@
 namespace SA
 {
     [CreateAssetMenu(menuName = "Manager/ResourceManager")]
-    class ResourcesManager: ScriptableObject
+    public class ResourcesManager: ScriptableObject
     {
-        
 
     }
 }

@@ -18,6 +18,8 @@ namespace SA
         public Player[] Players;
         public StateManager stateManager;
 
+        public ResourceHolder holder;
+
 
         private PlayerConnectionScript playerConObj;
 
@@ -29,8 +31,15 @@ namespace SA
 
         private void Start()
         {
-            Resources.Load<Player>(@"Data/Variables/Player1").StartingCardID = 1;
-            Resources.Load<Player>(@"Data/Variables/Player2").StartingCardID = 101;
+            Player Player1 = Resources.Load<Player>(@"Data/Variables/Player1");
+            Player1.StartingCardID = 1;
+            Player1.setResourceHolder(holder);
+            Player Player2 = Resources.Load<Player>(@"Data/Variables/Player2");
+            Player2.StartingCardID = 101;
+            Player2.setResourceHolder(holder);
+
+
+
             Settings.gameManager = this;
             if (!isServer)
             {

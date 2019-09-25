@@ -21,6 +21,7 @@ MonoBehaviour:
   deskCardLogic: {fileID: 11400000, guid: 8d4ca5c8e2eb7814c849d766b0272931, type: 2}
   graveLogic: {fileID: 11400000, guid: 830b7c16cd0b09845a291f7893971023, type: 2}
   StartingState: {fileID: 11400000, guid: 388fa4bb207c90b4a9acb73684dd817f, type: 2}
+  resourceHolder: {fileID: 0}
   StartingCardID: 101
   MaxResource: 10
   AvailableCards: 010000000100000001000000020000000300000003000000040000000400000004000000050000000600000009000000090000000e0000000f000000
