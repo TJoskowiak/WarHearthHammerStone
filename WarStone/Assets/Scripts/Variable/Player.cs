@@ -16,16 +16,23 @@ namespace SA
         public GameElements.CardElementLogic deskCardLogic;
         public GameElements.CardElementLogic graveLogic;
         public GameStates.State StartingState;
-        
         public int StartingCardID;
 
-        public List<int> AvailableCards = new List<int>(15) { 1, 1, 1, 2, 3, 3, 4, 4, 4, 5, 6, 9, 9, 14, 15 };
         public List<int> ShuffledCards;
 
         private static int HAND_SIZE = 5;
         private static int DESK_SIZE = 6;
         private ResourceHolder resourceHolder;
 
+        public int hitPoints;
+        public int maxHitPoints;
+
+        public void setStartedHitPoints()
+        {
+            hitPoints = ShuffledCards.Count;
+            maxHitPoints = hitPoints;
+        }
+        
         public void setResourceHolder(ResourceHolder holder)
         {
             resourceHolder = holder;
@@ -111,6 +118,7 @@ namespace SA
             Settings.SetParentToObject(cardObj, GraveyardTransform);
             CardInstance cardInstance = cardObj.GetComponent<SA.CardInstance>();
             cardInstance.currentLogic = graveLogic;
+            hitPoints--;
         }
 
 

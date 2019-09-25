@@ -22,6 +22,7 @@ namespace SA
         public ResourceHolder opponentHolder;
 
         private PlayerConnectionScript playerConObj;
+        
 
         public void SetPlayerConnectionScript(PlayerConnectionScript script)
         {
@@ -91,8 +92,10 @@ namespace SA
             SetState(currentPlayer.getStaringState());
             GetPlayer(1).ShuffleCards();
             GetPlayer(1).RestartResource();
+            GetPlayer(1).setStartedHitPoints();
             GetPlayer(2).ShuffleCards();
             GetPlayer(2).RestartResource();
+            GetPlayer(2).setStartedHitPoints();
             onGameStart.Raise();
         }
 
