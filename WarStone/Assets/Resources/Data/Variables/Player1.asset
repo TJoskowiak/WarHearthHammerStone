@@ -18,4 +18,5 @@ MonoBehaviour:
   GraveyardTransform: {fileID: 11400000, guid: ee02c2a318e34224286a3c610c2f25ba, type: 2}
   HandLogic: {fileID: 11400000, guid: edc5bc8940461df409986ff19012e01c, type: 2}
   deskCardLogic: {fileID: 11400000, guid: 5edef82679dbfbf4191c0bff1faed98d, type: 2}
-  StartingCardID: 2
+  StartingState: {fileID: 11400000, guid: c9cf79f39b51c1a419e4f989df578e54, type: 2}
+  StartingCardID: 1

@@ -10,7 +10,7 @@ namespace SA.GameElements
 
         public override void Exeute()
         {
-            GameObject.Find("LocalPlayer").GetComponent<PlayerConnectionScript>().CmdCardDeployed(card.instance.gameObject, Settings.gameManager.currentPlayer.PlayerID);
+            Settings.gameManager.AddCardToDesk(card.instance.gameObject);
         }
 
         public override bool IsMyArea()

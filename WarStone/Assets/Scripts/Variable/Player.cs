@@ -13,17 +13,29 @@ namespace SA
         public SO.TransformVariable GraveyardTransform;
         public GameElements.CardElementLogic HandLogic;
         public GameElements.CardElementLogic deskCardLogic;
+        public GameStates.State StartingState;
         public int StartingCardID;
         public ArrayList AvailableCards = new ArrayList(15) { 1, 1, 1, 2, 3, 3, 4, 4, 4, 5, 6, 9, 9, 14, 15 };
         public ArrayList ShuffledCards;
 
         private static int HAND_SIZE = 5;
-        private static int DESK_SIZE = 5;
+        private static int DESK_SIZE = 6;
 
-        public bool HandFreeSapce()
+        public bool isHandFreeSapce()
         {
             return HandTransform.value.childCount < HAND_SIZE;
         }
+
+        public bool isDeskFreeSpace()
+        {
+            return deskTransform.value.childCount < DESK_SIZE;
+        }
+
+        public GameStates.State getStaringState()
+        {
+            return StartingState;
+        }
+
 
         private void ShuffleCards()
         {

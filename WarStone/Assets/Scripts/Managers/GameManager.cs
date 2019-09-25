@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using SA.GameStates;
-
+using UnityEngine.UI;
 
 namespace SA
 {
@@ -16,25 +16,32 @@ namespace SA
         public Player currentPlayer;
         public Player[] Players;
 
+        private PlayerConnectionScript playerConObj;
+
+        public void SetPlayerConnectionScript(PlayerConnectionScript script)
+        {
+            playerConObj = script;
+        }
+
 
         private void Start()
         {
             Resources.Load<Player>(@"Data/Variables/Player1").StartingCardID = 1;
             Resources.Load<Player>(@"Data/Variables/Player2").StartingCardID = 101;
             Settings.gameManager = this;
-
-
-            if (!isServer) {
+            if (!isServer)
+            {
                 Settings.ChangeStateToOpponentControlState();
                 currentPlayer = Resources.Load<Player>(@"Data/Variables/Player2");
-                
+            }
 
-
-            } else {
+            else
+            {
                 Settings.ChangeStateToPlayerControlState();
                 currentPlayer = Resources.Load<Player>(@"Data/Variables/Player1");
-
             }
+
+
         }
 
         private void Update()
@@ -45,6 +52,15 @@ namespace SA
         public void SetState(State state)
         {
             currentState = state;
+            var TurnTextbox = GameObject.Find("MyTurnTextbox");
+            var TurnTextboxComp = TurnTextbox.GetComponent<Text>();
+            if (currentState.StateName != "")
+                TurnTextboxComp.text = currentState.StateName;
+        }
+
+        public void StartGame()
+        {
+            SetState(currentPlayer.getStaringState());
         }
 
         public Player GetPlayer(int ID)
@@ -54,13 +70,20 @@ namespace SA
 
         public void CreateHandCard()
         {
-            if (currentPlayer.HandFreeSapce())
+            if (!playerConObj) Debug.LogError("PlayerConnectionObject is not assign in Game Manager");
+            if (currentPlayer.isHandFreeSapce())
             {
-                var playerConObj = GameObject.Find("LocalPlayer").GetComponent<PlayerConnectionScript>();
                 playerConObj.CmdSpawnCard(currentPlayer.PlayerID);
             }
-            //Spawn object
+        }
 
+        public void AddCardToDesk(GameObject cardObj)
+        {
+            if (!playerConObj) Debug.LogError("PlayerConnectionObject is not assign in Game Manager");
+            if (currentPlayer.isDeskFreeSpace())
+            {
+                playerConObj.CmdCardDeployed(cardObj, currentPlayer.PlayerID);
+            }
         }
 
 

@@ -12,9 +12,17 @@ public class PlayerConnectionScript : NetworkBehaviour
     // Start is called before the first frame update
     void Start() {
         if (isLocalPlayer)
+        {
             this.name = "LocalPlayer";
+            SA.Settings.gameManager.SetPlayerConnectionScript(this);
+        }
         else
+        {
             this.name = "RemotePlayer";
+            //SA.Settings.gameManager.StartGame();
+        }
+
+
     }
 
 

@@ -5,7 +5,8 @@ namespace SA.GameStates
     [CreateAssetMenu(menuName ="State")]
     public class State : ScriptableObject
     {
-        public Action[] actions; 
+        public Action[] actions;
+        public string StateName;
 
         public void Tick(float d)
         {

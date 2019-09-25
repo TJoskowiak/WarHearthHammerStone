@@ -25,18 +25,9 @@ namespace SA
 
         public static void ChangeStateToPlayerControlState() {
             gameManager.SetState(stateManager.PlayerControlState);
-
-            var TurnTextbox = GameObject.Find("MyTurnTextbox");
-            var TurnTextboxComp = TurnTextbox.GetComponent<Text>();
-            TurnTextboxComp.text = "My turn";
         }
         public static void ChangeStateToOpponentControlState() {
             gameManager.SetState(stateManager.OpponentControlState);
-
-            var TurnTextbox = GameObject.Find("MyTurnTextbox");
-            var TurnTextboxComp = TurnTextbox.GetComponent<Text>();
-            TurnTextboxComp.text = "Opponent turn";
-
         }
 
         public static void SwapState() {

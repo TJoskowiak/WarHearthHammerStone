@@ -9,8 +9,7 @@ namespace SA.GameElements
         public SO.TransformVariable areaGrid;
 
         public override void Exeute() {
-            Debug.Log("Pl2 exeute");
-            GameObject.Find("LocalPlayer").GetComponent<PlayerConnectionScript>().CmdCardDeployed(card.instance.gameObject,Settings.gameManager.currentPlayer.PlayerID);
+            Settings.gameManager.AddCardToDesk(card.instance.gameObject);
         }
 
         public override bool IsMyArea()
