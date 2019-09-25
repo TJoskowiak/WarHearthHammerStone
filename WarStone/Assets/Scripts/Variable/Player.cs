@@ -13,10 +13,12 @@ namespace SA
         public SO.TransformVariable GraveyardTransform;
         public GameElements.CardElementLogic HandLogic;
         public GameElements.CardElementLogic deskCardLogic;
+        public GameElements.CardElementLogic graveLogic;
         public GameStates.State StartingState;
         public int StartingCardID;
         public ArrayList AvailableCards = new ArrayList(15) { 1, 1, 1, 2, 3, 3, 4, 4, 4, 5, 6, 9, 9, 14, 15 };
         public ArrayList ShuffledCards;
+        
 
         private static int HAND_SIZE = 5;
         private static int DESK_SIZE = 6;
@@ -85,6 +87,8 @@ namespace SA
         public void KillUnit(GameObject cardObj)
         {
             Settings.SetParentToObject(cardObj, GraveyardTransform);
+            CardInstance cardInstance = cardObj.GetComponent<SA.CardInstance>();
+            cardInstance.currentLogic = graveLogic;
         }
 
 
