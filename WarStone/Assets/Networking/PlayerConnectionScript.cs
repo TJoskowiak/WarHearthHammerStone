@@ -67,6 +67,18 @@ public class PlayerConnectionScript : NetworkBehaviour
     }
 
     [Command]
+    public void CmdEndGame(int LoserPlayerID)
+    {
+        RpcEndGame(LoserPlayerID);
+    }
+
+    [ClientRpc]
+    public void RpcEndGame(int LoserPlayerID)
+    {
+
+    }
+
+    [Command]
     public void CmdCardDeployed(GameObject card, int PlayerID)
     {
         var Server = GameObject.Find("ServerObject");

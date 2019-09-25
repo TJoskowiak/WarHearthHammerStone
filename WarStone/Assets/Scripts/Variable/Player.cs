@@ -144,12 +144,21 @@ namespace SA
             Settings.SetParentToObject(cardObj, deskTransform);
         }
 
+        public void TakeDMG()
+        {
+            hitPoints--;
+            if(hitPoints == 0)
+            {
+                Settings.gameManager.SetEndScreen(this);               
+            }
+        }
+
         public void KillUnit(GameObject cardObj)
         {
             Settings.SetParentToObject(cardObj, GraveyardTransform);
             CardInstance cardInstance = cardObj.GetComponent<SA.CardInstance>();
             cardInstance.currentLogic = graveLogic;
-            hitPoints--;
+            TakeDMG();
         }
 
 
