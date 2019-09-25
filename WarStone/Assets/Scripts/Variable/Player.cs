@@ -15,6 +15,7 @@ namespace SA
         public GameElements.CardElementLogic deskCardLogic;
         public GameElements.CardElementLogic graveLogic;
         public GameStates.State StartingState;
+        public GameObject resourceHolder;
         public int StartingCardID;
         public int MaxResource;
 
