@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -42,7 +43,13 @@ public class PlayerConnectionScript : NetworkBehaviour
         ServerComp.RegisterMove(FirstCard, SecondCard);
 
     }
-
+    [Command]
+    public void CmdRoundOver()
+    {
+        var Server = GameObject.Find("ServerObject");
+        var ServerComp = Server.GetComponent<ServerScript>();
+        ServerComp.RpcSwitchRounds();
+    }
 
     [ClientRpc]
     public void RpcSetDMG(GameObject attacker, GameObject victim)
@@ -94,7 +101,26 @@ public class PlayerConnectionScript : NetworkBehaviour
 
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
+        if(firstCard != 0 && secondCard != 0)
+        {
+            CmdSendMovement(firstCard, secondCard);
 
+            try
+            {
+                var firstViz = GameObject.Find(firstCard.ToString()).GetComponent<SA.CardViz>();
+                var secondViz = GameObject.Find(secondCard.ToString()).GetComponent<SA.CardViz>();
+
+                firstViz._highlight = false;
+                secondViz._highlight = false;
+            }
+            catch (Exception e)
+            {
+                Debug.Log(e);
+            }
+            firstCard = 0;
+            secondCard = 0;
+        }
     }
 }

@@ -25,6 +25,7 @@ namespace SA.GameStates
             } else if (Input.GetMouseButtonDown(1)) {
                 var Player = GameObject.Find("LocalPlayer");
                 var PlayerComp = Player.GetComponent<PlayerConnectionScript>();
+                PlayerComp.CmdRoundOver();
                 PlayerComp.CmdSendMovement(PlayerComp.firstCard, PlayerComp.secondCard);
 
                 try {

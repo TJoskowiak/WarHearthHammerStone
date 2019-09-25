@@ -24,7 +24,7 @@ public class ServerScript : NetworkBehaviour
 
 
         Debug.Log("Server: Registered the move " + FirstCard.ToString() + " " + SecondCard.ToString() + " , new turn");
-        RpcSwitchRounds();
+        
     }
 
     [ClientRpc]
