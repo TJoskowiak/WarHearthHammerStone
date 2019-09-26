@@ -32,17 +32,18 @@ public class PlayerConnectionScript : NetworkBehaviour
     {
         var Server = GameObject.Find("ServerObject");
         var ServerComp = Server.GetComponent<ServerScript>();
-        ServerComp.RegisterMove(FirstCard, SecondCard);
 
         if (FirstCard != 0 && SecondCard != 0)
         {
 
 
-            var firstCard = GameObject.Find(FirstCard.ToString()) as GameObject;
-            var secondCard = GameObject.Find(SecondCard.ToString()) as GameObject;
-            RpcSetDMG(firstCard, secondCard);
-            RpcSetDMG(secondCard, firstCard);
+            var firstCardObj = GameObject.Find(FirstCard.ToString()) as GameObject;
+            var secondCardObj = GameObject.Find(SecondCard.ToString()) as GameObject;
+            RpcSetDMG(firstCardObj, secondCardObj);
+            RpcSetDMG(secondCardObj, firstCardObj);
+
             ServerComp.RpcMoveCountIncrement();
+            RpcMoveInfo(firstCard, secondCard);
         }
 
         
@@ -63,6 +64,40 @@ public class PlayerConnectionScript : NetworkBehaviour
         var victimCard = victim.GetComponent<SA.CardInstance>();
 
         victimCard.takeDMG(attackerCard);
+
+    }
+
+    [ClientRpc]
+    public void RpcMoveInfo(int FirstCard, int SecondCard)
+    {
+        var Player1CardComp = GameObject.Find(FirstCard.ToString()).GetComponent<SA.CardViz>();
+        var Player2CardComp = GameObject.Find(SecondCard.ToString()).GetComponent<SA.CardViz>();
+
+        string LogMesagge = "";
+        if (SA.Settings.gameManager.currentState == SA.Settings.stateManager.PlayerControlState)
+        {
+            if(SA.Settings.gameManager.currentPlayer.PlayerID == 1)
+            {
+                LogMesagge = Player1CardComp.cardName.text + "has attacked " + Player2CardComp.cardName.text + "./n";
+            }
+            else
+            {
+                LogMesagge = Player2CardComp.cardName.text + "has attacked " + Player1CardComp.cardName.text + "./n";
+            }
+        }
+        else
+        {
+            if (SA.Settings.gameManager.currentPlayer.PlayerID == 1)
+            {
+                LogMesagge = Player2CardComp.cardName.text + "has attacked " + Player1CardComp.cardName.text + "./n";
+            }
+            else
+            {
+                LogMesagge = Player1CardComp.cardName.text + "has attacked " + Player2CardComp.cardName.text + "./n";
+            }
+        }
+        //TO IMPLEMENT ADDING TO OBJECT HERE
+
 
     }
 
