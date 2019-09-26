@@ -15,13 +15,6 @@ public class ServerScript : NetworkBehaviour
 
     }
 
-    public void RegisterMove(int FirstCard, int SecondCard) {
-        if (!isServer) {
-            return;
-        }
-        Debug.Log("Server: Registered the move " + FirstCard.ToString() + " " + SecondCard.ToString() + " , new turn");
-    }
-
     [ClientRpc]
     public void RpcSwitchRounds() {
         SA.Settings.gameManager.EndTurn();
