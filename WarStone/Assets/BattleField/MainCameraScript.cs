@@ -7,6 +7,7 @@ public class MainCameraScript : NetworkBehaviour
 {
     // Start is called before the first frame update
     void Start() {
+        this.GetComponent<Animator>().Play("test");
         if (!isServer) {
             transform.Rotate(new Vector3(0, 0, 180));
         }
