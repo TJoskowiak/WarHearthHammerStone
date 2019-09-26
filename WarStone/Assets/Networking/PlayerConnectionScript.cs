@@ -96,7 +96,7 @@ public class PlayerConnectionScript : NetworkBehaviour
                 LogMesagge = Player1CardComp.cardName.text + "has attacked " + Player2CardComp.cardName.text + "./n";
             }
         }
-        //TO IMPLEMENT ADDING TO OBJECT HERE
+        GameObject.Find("LogWindow").GetComponent<LogWindowScript>().Log(LogMesagge);
 
 
     }
