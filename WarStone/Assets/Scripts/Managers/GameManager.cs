@@ -30,6 +30,9 @@ namespace SA
         public GameObject Player1Deck;
         public GameObject Player2Deck;
 
+        public GameObject YouDeadController;
+        public GameObject YouWonController;
+
         public int MoveCounter = 0;
 
 
@@ -112,10 +115,28 @@ namespace SA
 
         public void setEndScreen(int LoserPlayerID)
         {
-            if (LoserPlayerID == currentPlayer.PlayerID)
+            if (LoserPlayerID == currentPlayer.PlayerID) {
+                YouDeadController.SetActive(true);
+                GameObject.Find("TurnButton").SetActive(false);
+                GameObject.Find("Player1HeroInfoArea").SetActive(false);
+                GameObject.Find("Player2HeroInfoArea").SetActive(false);
+                GameObject.Find("Screen Space Canvas").SetActive(false);
+                GameObject.Find("Player1 Hand").SetActive(false);
+                GameObject.Find("ExitButton").SetActive(false);
+
+
                 Debug.Log("Przegrana");
-            else
-                Debug.Log("Wygrana"); 
+
+            } else {
+                YouWonController.SetActive(true);
+                GameObject.Find("TurnButton").SetActive(false);
+                GameObject.Find("Player1HeroInfoArea").SetActive(false);
+                GameObject.Find("Player2HeroInfoArea").SetActive(false);
+                GameObject.Find("Screen Space Canvas").SetActive(false);
+                GameObject.Find("Player2 Hand").SetActive(false);
+                GameObject.Find("ExitButton").SetActive(false);
+
+            }
         }
 
 
