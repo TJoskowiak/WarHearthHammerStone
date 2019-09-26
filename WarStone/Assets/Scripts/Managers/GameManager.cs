@@ -89,14 +89,14 @@ namespace SA
         {
             if (currentState == stateManager.OpponentControlState)
             {
-                if (MoveCounter == 0) opponentPlayer.hitPoints--;
+                if (MoveCounter == 0) opponentPlayer.TakeDMG();
 
                 SetState(stateManager.PlayerControlState);
                 opponentHolder.RestartResource();
             }
             else if (currentState == stateManager.PlayerControlState)
             {
-                if (MoveCounter == 0) currentPlayer.hitPoints--;
+                if (MoveCounter == 0) currentPlayer.TakeDMG();
      
                 SetState(stateManager.OpponentControlState);
                 myHolder.RestartResource();
@@ -104,6 +104,21 @@ namespace SA
             MoveCounter = 0;
             
         }
+
+        public void EndGame(Player Loser)
+        {
+            playerConObj.CmdEndGame(Loser.PlayerID);
+        }
+
+        public void setEndScreen(int LoserPlayerID)
+        {
+            if (LoserPlayerID == currentPlayer.PlayerID)
+                Debug.Log("Przegrana");
+            else
+                Debug.Log("Wygrana"); 
+        }
+
+
 
         private void Update()
         {

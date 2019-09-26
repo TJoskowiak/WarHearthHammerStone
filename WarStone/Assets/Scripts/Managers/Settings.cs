@@ -23,21 +23,6 @@ namespace SA
             return results;
         }
 
-        public static void ChangeStateToPlayerControlState() {
-            gameManager.SetState(stateManager.PlayerControlState);
-        }
-        public static void ChangeStateToOpponentControlState() {
-            gameManager.SetState(stateManager.OpponentControlState);
-        }
-
-        public static void SwapState() {
-            if (gameManager.currentState == stateManager.OpponentControlState) {
-                ChangeStateToPlayerControlState();
-            } else if (gameManager.currentState == stateManager.PlayerControlState) {
-                ChangeStateToOpponentControlState();
-            }
-        }
-
         public static void SetParentToObject(GameObject child, SO.TransformVariable parent){
             child.transform.SetParent(parent.value.transform);
             child.transform.localPosition = Vector3.zero;
